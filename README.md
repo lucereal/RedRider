@@ -1,2 +1,2 @@
-# RaiderRider
+# Red Rider
 Senior Capstone project
