@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RedRider</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_post">PostActivity</string>
+    <string name="title_activity_match">MatchActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+</resources>
