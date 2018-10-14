@@ -1,59 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.android.architecture.blueprints.todoapp.Match.ScrollChildSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/refresh_layout"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/MatchContainer"
+
+    <CheckBox
+        android:id="@+id/task_detail_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+         />
+
+    <TextView
+        android:id="@+id/task_detail_title"
+        android:layout_toRightOf="@id/task_detail_complete"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <LinearLayout
-            android:id="@+id/MatchLL"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/task_detail_description"
+        android:layout_toRightOf="@id/task_detail_complete"
+        android:layout_below="@id/task_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medium Text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-            <TextView
-                android:id="@+id/filteringLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:gravity="center_vertical" />
+</RelativeLayout>
+<!--<com.example.lucer_000.redrider.MatchPage.ScrollChildSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:id="@+id/refresh_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
 
-            <ListView
-                android:id="@+id/Match_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/MatchContainer"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:clickable="true"-->
+        <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:id="@+id/noMatch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/MatchLL"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/filteringLabel"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
+                <!--android:gravity="center_vertical" />-->
+
+            <!--<ListView-->
+                <!--android:id="@+id/Match_list"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/noMatch"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:orientation="vertical">-->
 
 
-            <TextView
-                android:id="@+id/noMatchMain"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+            <!--<TextView-->
+                <!--android:id="@+id/noMatchMain"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center" />-->
 
-            <TextView
-                android:id="@+id/noMatchAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:gravity="center" />
+            <!--<TextView-->
+                <!--android:id="@+id/noMatchAdd"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="48dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center" />-->
 
-        </LinearLayout>
-    </RelativeLayout>
-</com.example.android.architecture.blueprints.todoapp.Match.ScrollChildSwipeRefreshLayout>
+        <!--</LinearLayout>-->
+    <!--</RelativeLayout>-->
+<!--</com.example.android.architecture.blueprints.todoapp.Match.ScrollChildSwipeRefreshLayout>-->
+
     <!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->

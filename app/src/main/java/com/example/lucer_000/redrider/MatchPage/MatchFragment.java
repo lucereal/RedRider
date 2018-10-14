@@ -62,7 +62,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
     @Override
     public void setPresenter(MatchContract.Presenter presenter) {
-        //mPresenter = checkNotNull(presenter);
+        mPresenter = presenter;
     }
 
 
