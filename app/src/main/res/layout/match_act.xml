@@ -8,12 +8,24 @@
     tools:context=".MatchPage.MatchActivity"
     tools:openDrawer="start">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Toolbar"
+                android:minHeight="?attr/actionBarSize" />
+
+        </android.support.design.widget.AppBarLayout>
 
 
         <android.support.design.widget.CoordinatorLayout
@@ -30,12 +42,23 @@
 
     </LinearLayout>
 
+    <!-- Navigation Drawer -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_actions" />
+   />
 
 
 </android.support.v4.widget.DrawerLayout>
 
 
-
+    <!--app:headerLayout="@layout/nav_header"-->
+    <!--app:menu="@menu/drawer_actions"-->
 <!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->

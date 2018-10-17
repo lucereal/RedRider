@@ -31,8 +31,14 @@ public class MatchActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Set up the navigation drawer.
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
+        NavigationView navigationView = findViewById(R.id.nav_header);
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
+
 
 
         MatchFragment matchFragment =
@@ -53,6 +59,31 @@ public class MatchActivity extends AppCompatActivity {
         //injection???
 
 
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+//        navigationView.setNavigationItemSelectedListener(
+//                new NavigationView.OnNavigationItemSelectedListener() {
+//                    @Override
+//                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+//                        switch (menuItem.getItemId()) {
+//                            case R.id.list_navigation_menu_item:
+//                                // Do nothing, we're already on that screen
+//                                break;
+//                            case R.id.statistics_navigation_menu_item:
+//                                Intent intent =
+//                                        new Intent(TasksActivity.this, StatisticsActivity.class);
+//                                startActivity(intent);
+//                                break;
+//                            default:
+//                                break;
+//                        }
+//                        // Close the navigation drawer when an item is selected.
+//                        menuItem.setChecked(true);
+//                        mDrawerLayout.closeDrawers();
+//                        return true;
+//                    }
+//                });
     }
 
 }
