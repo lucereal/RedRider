@@ -81,7 +81,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.match_frag, container, false);
+        final View root = inflater.inflate(R.layout.match_frag, container, false);
 
         button = root.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener(){
