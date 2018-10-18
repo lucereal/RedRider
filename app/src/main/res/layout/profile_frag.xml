@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Profile.ProfileActivity"
-    tools:showIn="@layout/profile_act">
+    tools:showIn="@layout/profile_act"
+    android:background="@drawable/gradientbackground">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="70dp"
+        tools:srcCompat="@drawable/avatar"
+        />
 </android.support.constraint.ConstraintLayout>
