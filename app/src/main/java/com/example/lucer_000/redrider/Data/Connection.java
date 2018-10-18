@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class Connection {
 
-    //public static void main(String[] args) {
-    Connection() {
+    public static void main(String[] args) {
+    //Connection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://75.111.163.91:3306/codemalone", "general", "password");
@@ -20,4 +20,3 @@ public class Connection {
         }
     }
 }
-//}
