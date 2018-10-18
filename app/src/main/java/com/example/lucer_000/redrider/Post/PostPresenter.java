@@ -1,4 +1,26 @@
 package com.example.lucer_000.redrider.Post;
 
-public class PostPresenter {
+
+import android.support.annotation.NonNull;
+
+import com.example.lucer_000.redrider.MatchPage.MatchContract;
+
+public class PostPresenter implements PostContract.Presenter {
+
+
+
+    @NonNull
+    private final PostContract.View mPostView;
+
+    public PostPresenter(@NonNull PostContract.View postView){
+        // mMatchView = checkNotNull(matchView, "matchView cannot be null!");
+        mPostView = postView;
+        mPostView.setPresenter(this);
+    }
+
+    @Override
+    public void start() {
+
+    }
+
 }

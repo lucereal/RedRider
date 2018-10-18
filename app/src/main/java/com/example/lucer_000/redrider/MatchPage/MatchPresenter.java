@@ -30,4 +30,15 @@ public class MatchPresenter implements MatchContract.Presenter {
 //            mTasksView.showSuccessfullySavedMessage();
 //        }
     }
+
+
+
+    public String getValue(){
+        return "Shoe";
+    }
+
+    @Override
+    public void addPost(){
+        mMatchView.showAddPost();
+    }
 }

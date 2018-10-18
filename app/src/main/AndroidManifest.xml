@@ -38,7 +38,9 @@
 
         <meta-data
             android:name="com.google.android.actions"
-            android:resource="@xml/drawer_actions" />
+            android:resource="@menu/drawer_actions"
+            />
+
     </application>
 
 </manifest>

@@ -36,22 +36,23 @@
             <FrameLayout
                 android:id="@+id/contentFrame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
 
+
+            </FrameLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="86dp"
+                android:layout_height="65dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@android:drawable/ic_menu_add" />
         </android.support.design.widget.CoordinatorLayout>
 
     </LinearLayout>
 
-    <!-- Navigation Drawer -->
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_actions" />
-   />
+
 
 
 </android.support.v4.widget.DrawerLayout>

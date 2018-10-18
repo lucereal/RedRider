@@ -23,6 +23,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.example.lucer_000.redrider.Post.PostActivity;
 import com.example.lucer_000.redrider.R;
 
 import android.support.annotation.Nullable;
@@ -36,7 +40,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
     //intialize all views here
     //ex private TextView mTaskView
-
+    Button button;
 
 
 
@@ -51,6 +55,8 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+
 
     }
 
@@ -77,9 +83,41 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.match_frag, container, false);
 
+        button = root.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                String text = mPresenter.getValue();
+                TextView tv = root.findViewById(R.id.textView);
+                tv.setText(text);
+
+            }
+        });
+
+
+        // Set up floating action button
+        FloatingActionButton fab =
+                getActivity().findViewById(R.id.floatingActionButton);
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.addPost();
+            }
+        });
+
+
+
 
         return root;
     }
 
+    @Override
+    public void showAddPost(){
+        Intent intent = new Intent(getContext(), PostActivity.class);
+        startActivity(intent);
+    }
 
 }

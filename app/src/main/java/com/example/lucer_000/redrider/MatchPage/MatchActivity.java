@@ -34,10 +34,10 @@ public class MatchActivity extends AppCompatActivity {
         // Set up the navigation drawer.
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
-        NavigationView navigationView = findViewById(R.id.nav_header);
-        if (navigationView != null) {
-            setupDrawerContent(navigationView);
-        }
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        if (navigationView != null) {
+//            setupDrawerContent(navigationView);
+//        }
 
 
 

@@ -6,9 +6,13 @@ public interface MatchContract {
 
     interface View extends BaseView<Presenter>{
 
+        void showAddPost();
     }
 
     interface Presenter extends BasePresenter{
 
+        String getValue();
+
+        void addPost();
     }
 }
