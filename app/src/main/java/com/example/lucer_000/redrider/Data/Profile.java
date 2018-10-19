@@ -8,7 +8,16 @@ public class Profile {
 	String sex;
 	String email;
 	int rating;
+	String password;
 	
+	
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getIdProfile() {
 		return idProfile;
 	}
