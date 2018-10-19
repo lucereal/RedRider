@@ -7,6 +7,8 @@ public interface PostContract {
 
     interface View extends BaseView<Presenter>{
 
+        void setRiderView();
+        void setDriverView();
     }
     interface Presenter extends BasePresenter{
 

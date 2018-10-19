@@ -3,7 +3,7 @@ package com.example.lucer_000.redrider.Post;
 
 import android.support.annotation.NonNull;
 
-import com.example.lucer_000.redrider.MatchPage.MatchContract;
+
 
 public class PostPresenter implements PostContract.Presenter {
 
@@ -23,4 +23,15 @@ public class PostPresenter implements PostContract.Presenter {
 
     }
 
+//    @Override
+//    public void setDriverPostView(){
+//        mPostView.setDriverView();
+//    }
+//
+//    @Override
+//    public void setRiderPostView(){
+//        mPostView.setRiderView();
+//    }
+
 }
+

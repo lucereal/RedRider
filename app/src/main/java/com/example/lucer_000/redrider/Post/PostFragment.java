@@ -19,10 +19,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+import android.widget.Button;
 
 import com.example.lucer_000.redrider.R;
 
@@ -65,8 +69,54 @@ public class PostFragment extends Fragment implements PostContract.View{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.match_frag, container, false);
+        View root = inflater.inflate(R.layout.post_frag, container, false);
 
+
+
+
+
+        Button riderBtn = root.findViewById(R.id.rider);
+        Button driverBtn = root.findViewById(R.id.driver);
+//        layoutParams = new LinearLayout.LayoutParams
+//                (LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+        riderBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                root.findViewById(R.id.includedLayout2).setVisibility(View.GONE);
+                root.findViewById(R.id.includedLayout).setVisibility(View.VISIBLE);
+            }
+        });
+
+        driverBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                root.findViewById(R.id.includedLayout).setVisibility(View.GONE);
+                root.findViewById(R.id.includedLayout2).setVisibility(View.VISIBLE);
+            }
+        });
+
+//        ToggleButton riderBtn = root.findViewById(R.id.rider);
+//        ToggleButton driverBtn = root.findViewById(R.id.driver);
+
+//        riderBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked){
+//
+//                    View inputs = inflater.inflate(R.layout.input_rider,container,true);
+//                    //mPresenter.setRiderPostView();z
+//                }
+//            }
+//        });
+
+//        driverBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked){
+//                    View input = inflater.inflate(R.layout.post_input,container,true);
+//                    //mPresenter.setDriverPostView();
+//                }
+//            }
+//        });
 
 
 
@@ -76,6 +126,16 @@ public class PostFragment extends Fragment implements PostContract.View{
 
 
         return root;
+    }
+
+    @Override
+    public void setRiderView(){
+
+    }
+
+    @Override
+    public void setDriverView(){
+
     }
 
 }

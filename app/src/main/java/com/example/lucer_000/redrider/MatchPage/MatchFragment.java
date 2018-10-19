@@ -83,7 +83,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                              Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.match_frag, container, false);
 
-  
+
 
 
         // Set up floating action button
