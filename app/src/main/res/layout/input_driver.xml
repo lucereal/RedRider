@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <EditText
-    android:id="@+id/editText1"
+    android:id="@+id/dest"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="@string/dest_hint"
@@ -14,11 +14,29 @@
 
 
     <EditText
-    android:id="@+id/editText2"
+    android:id="@+id/date"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="@string/date_hint"
     android:inputType="text"
    />
+    <EditText
+        android:id="@+id/compensation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/compensation"
+        android:inputType="text"
+        />
+
+
+    <EditText
+        android:id="@+id/numSeats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/numSeats"
+        android:inputType="text"
+        />
+
+
 
 </LinearLayout>

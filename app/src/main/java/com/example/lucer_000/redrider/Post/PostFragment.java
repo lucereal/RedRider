@@ -27,14 +27,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.Button;
+import org.json.JSONObject;
+
 
 import com.example.lucer_000.redrider.R;
 
 public class PostFragment extends Fragment implements PostContract.View{
 
     PostContract.Presenter mPresenter;
-
-
+    View root;
+    private TextView destination;
+    private TextView date;
+    private TextView compensation;
+    private TextView numSeats;
+    private boolean driver;
+    Button riderBtn;
+    Button driverBtn;
     public PostFragment(){}
     //empty constructor
 
@@ -69,21 +77,24 @@ public class PostFragment extends Fragment implements PostContract.View{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.post_frag, container, false);
+         root = inflater.inflate(R.layout.post_frag, container, false);
 
 
 
 
 
-        Button riderBtn = root.findViewById(R.id.rider);
-        Button driverBtn = root.findViewById(R.id.driver);
-//        layoutParams = new LinearLayout.LayoutParams
-//                (LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        riderBtn = root.findViewById(R.id.rider);
+        driverBtn = root.findViewById(R.id.driver);
+
 
         riderBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 root.findViewById(R.id.includedLayout2).setVisibility(View.GONE);
                 root.findViewById(R.id.includedLayout).setVisibility(View.VISIBLE);
+                //root.findViewById(R.id.submit).setVisibility(View.VISIBLE);
+                driver = false;
+                mPresenter.setSubmitBtn();
+
             }
         });
 
@@ -91,6 +102,8 @@ public class PostFragment extends Fragment implements PostContract.View{
             public void onClick(View v) {
                 root.findViewById(R.id.includedLayout).setVisibility(View.GONE);
                 root.findViewById(R.id.includedLayout2).setVisibility(View.VISIBLE);
+                driver = true;
+                mPresenter.setSubmitBtn();
             }
         });
 
@@ -112,7 +125,7 @@ public class PostFragment extends Fragment implements PostContract.View{
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 //                if(isChecked){
-//                    View input = inflater.inflate(R.layout.post_input,container,true);
+//                    View input = inflater.inflate(R.layout.input_driver,container,true);
 //                    //mPresenter.setDriverPostView();
 //                }
 //            }
@@ -128,14 +141,46 @@ public class PostFragment extends Fragment implements PostContract.View{
         return root;
     }
 
+
     @Override
-    public void setRiderView(){
+    public void submitPostSuccess(String type){
+//        riderBtn.setVisibility(View.GONE);
+//        driverBtn.setVisibility(View.GONE);
+        root.findViewById(R.id.includedLayout2).setVisibility(View.GONE);
+        root.findViewById(R.id.includedLayout).setVisibility(View.GONE);
+        root.findViewById(R.id.submit).setVisibility(View.GONE);
+        if(type.equals("driver")){
+            root.findViewById(R.id.driversuccess).setVisibility(View.VISIBLE);
+        }else{
+            root.findViewById(R.id.ridersuccess).setVisibility(View.VISIBLE);
+        }
 
     }
 
     @Override
-    public void setDriverView(){
+    public void setSubmitBtn(){
+        //JSONObject jsonObj = new JSONObject();
+
+        Button submitBtn = root.findViewById(R.id.submit);
+        submitBtn.setVisibility(View.VISIBLE);
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                destination = root.findViewById(R.id.dest);
+                date = root.findViewById(R.id.date);
+                if(driver){
+                    compensation = root.findViewById(R.id.compensation);
+                    numSeats = root.findViewById(R.id.numSeats);
+                    mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString(),compensation.getText().toString(),numSeats.getText().toString());
+                }else{
+                    mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString());
+                }
+
+
+
+            }
+        });
 
     }
-
 }

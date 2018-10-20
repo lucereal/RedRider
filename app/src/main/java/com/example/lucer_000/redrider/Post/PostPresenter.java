@@ -2,8 +2,8 @@ package com.example.lucer_000.redrider.Post;
 
 
 import android.support.annotation.NonNull;
-
-
+import android.view.View;
+import android.view.ViewGroup;
 
 public class PostPresenter implements PostContract.Presenter {
 
@@ -23,15 +23,18 @@ public class PostPresenter implements PostContract.Presenter {
 
     }
 
-//    @Override
-//    public void setDriverPostView(){
-//        mPostView.setDriverView();
-//    }
-//
-//    @Override
-//    public void setRiderPostView(){
-//        mPostView.setRiderView();
-//    }
+    @Override
+    public void submitNewPost(String dest, String date){
+        mPostView.submitPostSuccess("rider");
+    }
+    @Override
+    public void submitNewPost(String dest, String date, String comp, String numSeats){
+        mPostView.submitPostSuccess("driver");
+    }
 
+    @Override
+    public void setSubmitBtn(){
+        mPostView.setSubmitBtn();
+    }
 }
 

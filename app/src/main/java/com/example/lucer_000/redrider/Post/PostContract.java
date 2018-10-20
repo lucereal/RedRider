@@ -7,10 +7,13 @@ public interface PostContract {
 
     interface View extends BaseView<Presenter>{
 
-        void setRiderView();
-        void setDriverView();
+        void submitPostSuccess(String type);
+        void setSubmitBtn();
     }
     interface Presenter extends BasePresenter{
 
+        void setSubmitBtn();
+        void submitNewPost(String dest,String date);
+        void submitNewPost(String dest,String date,String comp,String numSeats);
     }
 }

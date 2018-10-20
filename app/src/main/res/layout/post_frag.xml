@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_gravity="top"
            >
 
             <TextView
@@ -28,16 +29,25 @@
                 android:textSize="30sp"
                 />
 
-            <Button
-                android:id="@+id/rider"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rider"/>
-            <Button
-                android:id="@+id/driver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/driver"/>
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                >
+
+                <Button
+                    android:id="@+id/rider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rider"/>
+                <Button
+                    android:id="@+id/driver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/driver"/>
+            </LinearLayout>
+
 
             <!--<LinearLayout-->
                 <!--android:layout_width="match_parent"-->
@@ -68,11 +78,36 @@
                 />
 
             <include
-                layout="@layout/post_input"
+                layout="@layout/input_driver"
                 android:id="@+id/includedLayout2"
                 android:visibility="gone"
                 />
 
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/driversuccess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="driver post success"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/ridersuccess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rider post success"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
