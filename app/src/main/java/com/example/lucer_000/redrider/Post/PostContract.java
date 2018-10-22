@@ -7,7 +7,7 @@ public interface PostContract {
 
     interface View extends BaseView<Presenter>{
 
-        void submitPostSuccess(String type);
+        void submitPostSuccess();
         void setSubmitBtn();
     }
     interface Presenter extends BasePresenter{

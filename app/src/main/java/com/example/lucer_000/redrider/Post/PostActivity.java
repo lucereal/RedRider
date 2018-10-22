@@ -10,9 +10,12 @@ import android.view.View;
 import com.example.lucer_000.redrider.MatchPage.MatchFragment;
 import com.example.lucer_000.redrider.R;
 import com.example.lucer_000.redrider.util.ActivityUtils;
+import com.example.lucer_000.redrider.Data.Injection;
+
 
 public class PostActivity extends AppCompatActivity {
 
+    public static final int REQUEST_ADD_POST = 1;
     PostPresenter mPostPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class PostActivity extends AppCompatActivity {
                     getSupportFragmentManager(), postFragment, R.id.contentFrame);
 
         }
-        mPostPresenter = new PostPresenter(postFragment);
+        mPostPresenter = new PostPresenter(Injection.provideTasksRepository(getApplicationContext()),postFragment);
 
 
     }

@@ -1,5 +1,6 @@
 package com.example.lucer_000.redrider.Post;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -29,7 +30,7 @@ import android.widget.ToggleButton;
 import android.widget.Button;
 import org.json.JSONObject;
 
-
+import com.example.lucer_000.redrider.MatchPage.MatchActivity;
 import com.example.lucer_000.redrider.R;
 
 public class PostFragment extends Fragment implements PostContract.View{
@@ -143,19 +144,18 @@ public class PostFragment extends Fragment implements PostContract.View{
 
 
     @Override
-    public void submitPostSuccess(String type){
+    public void submitPostSuccess(){
 //        riderBtn.setVisibility(View.GONE);
 //        driverBtn.setVisibility(View.GONE);
-        root.findViewById(R.id.includedLayout2).setVisibility(View.GONE);
-        root.findViewById(R.id.includedLayout).setVisibility(View.GONE);
-        root.findViewById(R.id.submit).setVisibility(View.GONE);
-        if(type.equals("driver")){
-            root.findViewById(R.id.driversuccess).setVisibility(View.VISIBLE);
-        }else{
-            root.findViewById(R.id.ridersuccess).setVisibility(View.VISIBLE);
-        }
+//        Intent intent = new Intent(getContext(), MatchActivity.class);
+//        startActivity(intent);
+
+        getActivity().setResult(Activity.RESULT_OK);
+        getActivity().finish();
+
 
     }
+
 
     @Override
     public void setSubmitBtn(){

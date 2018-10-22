@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.lucer_000.redrider.Data.Post;
 import com.example.lucer_000.redrider.Post.PostActivity;
 import com.example.lucer_000.redrider.R;
 
@@ -36,6 +37,9 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
     private MatchContract.Presenter mPresenter;
 
+
+    private LinearLayout mPostView;
+    View root;
     //initialize main view here
 
     //intialize all views here
@@ -81,7 +85,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View root = inflater.inflate(R.layout.match_frag, container, false);
+         root = inflater.inflate(R.layout.match_frag, container, false);
 
 
 
@@ -98,7 +102,10 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
             }
         });
 
+        // Set up tasks view
+        ListView listView = root.findViewById(R.id.post_list);
 
+        mPostView = root.findViewById(R.id.postLL);
 
 
         return root;
@@ -107,7 +114,16 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
     @Override
     public void showAddPost(){
         Intent intent = new Intent(getContext(), PostActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, PostActivity.REQUEST_ADD_POST);
     }
+
+
+
+    @Override
+    public void showPost(Post post){
+        root.findViewById(R.id.showpoststemp).setVisibility(View.VISIBLE);
+    }
+
+
 
 }
