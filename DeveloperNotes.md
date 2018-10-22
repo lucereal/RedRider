@@ -11,7 +11,7 @@ Each component will at least have the following:
 - [classname]_act.xml - this is the view of the activity, which creates the basic layout for the activity screen, creates structure where the fragment will then be places to display the content
 - [classname]_frag.xml - this is the view of the fragment which is where all the content and event listeners will be
 
-![](C:\Users\lucer_000\Desktop\RedRider\images\mvp.png)
+![](https://cdn-images-1.medium.com/max/1000/1*p2JvbgEir0BusDiiVHMvIA.png)
 
 Note: Instead of SQLite we are using MySQL
 
