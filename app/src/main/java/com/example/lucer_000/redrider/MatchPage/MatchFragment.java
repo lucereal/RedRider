@@ -28,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.lucer_000.redrider.Data.DriverPost;
 import com.example.lucer_000.redrider.Data.Post;
 import com.example.lucer_000.redrider.Post.PostActivity;
 import com.example.lucer_000.redrider.R;
@@ -155,18 +156,28 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+
             // Get the data item for this position
             Post post = getItem(position);
+
             // Check if an existing view is being reused, otherwise inflate the view
             if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_user, parent, false);
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.post, parent, false);
             }
             // Lookup view for data population
-//            TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
-//            TextView tvHome = (TextView) convertView.findViewById(R.id.tvHome);
-//            // Populate the data into the template view using the data object
-//            tvName.setText(user.name);
-//            tvHome.setText(user.hometown);
+            TextView dest = (TextView) convertView.findViewById(R.id.postDest);
+            TextView date= (TextView) convertView.findViewById(R.id.postDate);
+
+            if(post instanceof DriverPost){
+
+            }
+            TextView comp = convertView.findViewById(R.id.postComp);
+            TextView numSeats = convertView.findViewById(R.id.postSeats);
+            // Populate the data into the template view using the data object
+            dest.setText(post.getDestination());
+            date.setText(post.getDate());
+
+
             // Return the completed view to render on screen
             return convertView;
         }
