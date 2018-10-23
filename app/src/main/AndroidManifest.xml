@@ -18,7 +18,10 @@
         <activity
             android:name=".Login.LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
+
         <activity
             android:name=".Post.PostActivity"
             android:label="@string/title_activity_post"
@@ -32,10 +35,6 @@
         <activity
             android:name=".Register.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".MatchPage.MatchActivity"
-            android:label="@string/title_activity_match"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,12 +42,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MatchPage.MatchActivity"
+            android:label="@string/title_activity_match"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
 
 
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@menu/drawer_actions"
             />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
     </application>
 
