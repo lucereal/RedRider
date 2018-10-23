@@ -3,7 +3,7 @@ package com.example.lucer_000.redrider.Data;
 public class Rider {
 	String date;
 	String destination;
-	String riderId;
+	int riderId;
 	String time;
 	public String getDate() {
 		return date;
@@ -17,10 +17,10 @@ public class Rider {
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	public String getRiderId() {
+	public int getRiderId() {
 		return riderId;
 	}
-	public void setRiderId(String riderId) {
+	public void setRiderId(int riderId) {
 		this.riderId = riderId;
 	}
 	public String getTime() {

@@ -4,21 +4,16 @@ public class testing {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Profile testing = new Profile();
-		testing.setAge(15);
-		testing.setEmail("wall@ttu.edu");
-		testing.setMajor("Computer thing");
-		testing.setName("Guy");
-		testing.setSex("Male");
-		testing.setPassword("Password");
-		
-		try {
-		DBmanager tester=new DBmanager();
-		System.out.println(tester.signup(testing));
-		}catch(Exception message) {
-			System.out.println(message);
-		}
-		
+	Driver test= new Driver();
+	test.setDate("02/28/1996");
+	test.setDestination("Dallas");
+	test.setDriverId(1234);
+	test.setSeats(4);
+	test.setTime("10:30");
+	test.setVehicle("Big Truck");
+	
+	DBmanager testing= new DBmanager();
+	System.out.println(testing.makepost(test));
+	
 	}
-
 }
