@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-
+import com.example.lucer_000.redrider.Data.Injection;
 import com.example.lucer_000.redrider.util.ActivityUtils;
 import com.example.lucer_000.redrider.R;
 
@@ -55,7 +55,7 @@ public class MatchActivity extends AppCompatActivity {
 //        mMatchPresenter = new MatchPresenter(
 //                Injection.provideTasksRepository(getApplicationContext()), matchFragment);
 //
-            mMatchPresenter = new MatchPresenter(matchFragment);
+            mMatchPresenter = new MatchPresenter(Injection.provideTasksRepository(getApplicationContext()),matchFragment);
         //injection???
 
 

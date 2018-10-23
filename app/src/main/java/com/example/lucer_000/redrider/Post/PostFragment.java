@@ -1,5 +1,6 @@
 package com.example.lucer_000.redrider.Post;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,18 +20,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+import android.widget.Button;
+import org.json.JSONObject;
 
+import com.example.lucer_000.redrider.MatchPage.MatchActivity;
 import com.example.lucer_000.redrider.R;
 
 public class PostFragment extends Fragment implements PostContract.View{
 
     PostContract.Presenter mPresenter;
-
-
+    View root;
+    private TextView destination;
+    private TextView date;
+    private TextView compensation;
+    private TextView numSeats;
+    private boolean driver;
+    Button riderBtn;
+    Button driverBtn;
     public PostFragment(){}
     //empty constructor
 
@@ -65,8 +78,59 @@ public class PostFragment extends Fragment implements PostContract.View{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.match_frag, container, false);
+         root = inflater.inflate(R.layout.post_frag, container, false);
 
+
+
+
+
+        riderBtn = root.findViewById(R.id.rider);
+        driverBtn = root.findViewById(R.id.driver);
+
+
+        riderBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                root.findViewById(R.id.includedLayout2).setVisibility(View.GONE);
+                root.findViewById(R.id.includedLayout).setVisibility(View.VISIBLE);
+                //root.findViewById(R.id.submit).setVisibility(View.VISIBLE);
+                driver = false;
+                mPresenter.setSubmitBtn();
+
+            }
+        });
+
+        driverBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                root.findViewById(R.id.includedLayout).setVisibility(View.GONE);
+                root.findViewById(R.id.includedLayout2).setVisibility(View.VISIBLE);
+                driver = true;
+                mPresenter.setSubmitBtn();
+            }
+        });
+
+//        ToggleButton riderBtn = root.findViewById(R.id.rider);
+//        ToggleButton driverBtn = root.findViewById(R.id.driver);
+
+//        riderBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked){
+//
+//                    View inputs = inflater.inflate(R.layout.input_rider,container,true);
+//                    //mPresenter.setRiderPostView();z
+//                }
+//            }
+//        });
+
+//        driverBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked){
+//                    View input = inflater.inflate(R.layout.input_driver,container,true);
+//                    //mPresenter.setDriverPostView();
+//                }
+//            }
+//        });
 
 
 
@@ -78,4 +142,45 @@ public class PostFragment extends Fragment implements PostContract.View{
         return root;
     }
 
+
+    @Override
+    public void submitPostSuccess(){
+//        riderBtn.setVisibility(View.GONE);
+//        driverBtn.setVisibility(View.GONE);
+//        Intent intent = new Intent(getContext(), MatchActivity.class);
+//        startActivity(intent);
+
+        getActivity().setResult(Activity.RESULT_OK);
+        getActivity().finish();
+
+
+    }
+
+
+    @Override
+    public void setSubmitBtn(){
+        //JSONObject jsonObj = new JSONObject();
+
+        Button submitBtn = root.findViewById(R.id.submit);
+        submitBtn.setVisibility(View.VISIBLE);
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                destination = root.findViewById(R.id.dest);
+                date = root.findViewById(R.id.date);
+                if(driver){
+                    compensation = root.findViewById(R.id.compensation);
+                    numSeats = root.findViewById(R.id.numSeats);
+                    mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString(),compensation.getText().toString(),numSeats.getText().toString());
+                }else{
+                    mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString());
+                }
+
+
+
+            }
+        });
+
+    }
 }

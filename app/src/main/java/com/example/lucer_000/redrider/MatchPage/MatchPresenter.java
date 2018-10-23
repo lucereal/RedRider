@@ -2,8 +2,12 @@ package com.example.lucer_000.redrider.MatchPage;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import com.example.lucer_000.redrider.Data.Injection;
+import com.example.lucer_000.redrider.Data.PostRepository;
+import com.example.lucer_000.redrider.Data.Post;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MatchPresenter implements MatchContract.Presenter {
@@ -12,24 +16,26 @@ public class MatchPresenter implements MatchContract.Presenter {
 
     private final MatchContract.View mMatchView;
 
+    private PostRepository postRepository;
 
-    public MatchPresenter(@NonNull MatchContract.View matchView){
+    public MatchPresenter(PostRepository postRepository,@NonNull MatchContract.View matchView){
        // mMatchView = checkNotNull(matchView, "matchView cannot be null!");
         mMatchView = matchView;
+        this.postRepository = postRepository;
         mMatchView.setPresenter(this);
     }
     @Override
     public void start() {
-        //loadTasks(false);
+        loadPosts();
     }
 
 
-    public void result(int requestCode, int resultCode) {
-//        // If a task was successfully added, show snackbar
-//        if (AddEditTaskActivity.REQUEST_ADD_TASK == requestCode && Activity.RESULT_OK == resultCode) {
-//            mTasksView.showSuccessfullySavedMessage();
-//        }
-    }
+//    public void result(int requestCode, int resultCode) {
+////        // If a task was successfully added, show snackbar
+////        if (AddEditTaskActivity.REQUEST_ADD_TASK == requestCode && Activity.RESULT_OK == resultCode) {
+////            mTasksView.showSuccessfullySavedMessage();
+////        }
+//    }
 
 
 
@@ -40,5 +46,27 @@ public class MatchPresenter implements MatchContract.Presenter {
     @Override
     public void addPost(){
         mMatchView.showAddPost();
+    }
+
+    public void loadPosts(){
+        List<Post> postsToShow = new ArrayList<Post>();
+
+        postsToShow = postRepository.getPosts();
+
+        processPosts(postsToShow);
+
+
+    }
+
+    public void processPosts(List<Post> postList){
+        if(postList.isEmpty()){
+            processNoPosts();
+        }else{
+            mMatchView.showPost(postList.get(0));
+        }
+    }
+
+    public void processNoPosts(){
+
     }
 }

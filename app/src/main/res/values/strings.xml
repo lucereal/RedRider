@@ -7,5 +7,12 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="navigation_view_header_title">Profile Picture</string>
     <string name="list_title">Posts</string>
-    <string name="statistics_title">Stats</string>
+    <string name="dest_hint">Destination</string>
+    <string name="date_hint">Date</string>
+    <string name="post_text">New Post</string>
+    <string name="driver">Driver</string>
+    <string name="rider">Rider</string>
+    <string name="compensation">Compensation</string>
+    <string name="numSeats">Seats Available</string>
+
 </resources>
