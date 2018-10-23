@@ -1,6 +1,7 @@
 # Built application files
 *.apk
 *.ap_
+app/build.gradle
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -70,3 +71,5 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+app/build.gradle
+app/build.gradle

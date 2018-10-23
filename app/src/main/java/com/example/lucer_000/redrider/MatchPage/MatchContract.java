@@ -10,7 +10,7 @@ public interface MatchContract {
     interface View extends BaseView<Presenter>{
 
         void showAddPost();
-        void showPost(Post post);
+        void showPost(String[] postArray);
         //void onActivityResult(int requestCode, int resultCode, Intent data);
     }
 

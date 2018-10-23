@@ -1,5 +1,6 @@
 package com.example.lucer_000.redrider.MatchPage;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -26,11 +28,15 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.lucer_000.redrider.Data.DriverPost;
 import com.example.lucer_000.redrider.Data.Post;
 import com.example.lucer_000.redrider.Post.PostActivity;
 import com.example.lucer_000.redrider.R;
 
 import android.support.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MatchFragment extends Fragment implements  MatchContract.View {
@@ -38,12 +44,11 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
     private MatchContract.Presenter mPresenter;
 
 
-    private LinearLayout mPostView;
-    View root;
-    //initialize main view here
 
-    //intialize all views here
-    //ex private TextView mTaskView
+    View root;
+    ListView listView;
+    ArrayAdapter<String> adapter;
+    TextView postView;
     Button button;
 
 
@@ -103,9 +108,11 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
         });
 
         // Set up tasks view
-        ListView listView = root.findViewById(R.id.post_list);
+        listView = root.findViewById(R.id.post_list);
 
-        mPostView = root.findViewById(R.id.postLL);
+
+
+        //postView = root.findViewById(R.id.postdest);
 
 
         return root;
@@ -120,10 +127,64 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
 
     @Override
-    public void showPost(Post post){
-        root.findViewById(R.id.showpoststemp).setVisibility(View.VISIBLE);
+    public void showPost(String[] postArray){
+        //root.findViewById(R.id.showpoststemp).setVisibility(View.VISIBLE);
+
+        adapter = new ArrayAdapter<String>(getContext(),R.layout.post,postArray);
+        listView.setAdapter(adapter);
     }
 
+    private static class PostAdapter extends ArrayAdapter<Post>{
+
+        private List<Post> mPosts;
+
+        public PostAdapter(Context context, ArrayList<Post> posts) {
+            super(context, 0, posts);
+        }
+
+
+
+
+        @Override
+        public Post getItem(int i) {
+            return mPosts.get(i);
+        }
+
+        private void setList(List<Post> tasks) {
+            mPosts = tasks;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            // Get the data item for this position
+            Post post = getItem(position);
+
+            // Check if an existing view is being reused, otherwise inflate the view
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.post, parent, false);
+            }
+            // Lookup view for data population
+            TextView dest = (TextView) convertView.findViewById(R.id.postDest);
+            TextView date= (TextView) convertView.findViewById(R.id.postDate);
+
+            if(post instanceof DriverPost){
+
+            }
+            TextView comp = convertView.findViewById(R.id.postComp);
+            TextView numSeats = convertView.findViewById(R.id.postSeats);
+            // Populate the data into the template view using the data object
+            dest.setText(post.getDestination());
+            date.setText(post.getDate());
+
+
+            // Return the completed view to render on screen
+            return convertView;
+        }
+
+
+
+    }
 
 
 }
