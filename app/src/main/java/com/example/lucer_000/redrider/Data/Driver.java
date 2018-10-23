@@ -23,7 +23,7 @@ public class Driver {
 	public int getDriverId() {
 		return driverId;
 	}
-	public void setDriverId(String driverId) {
+	public void setDriverId(int driverId) {
 		this.driverId = driverId;
 	}
 	public int getSeats() {
