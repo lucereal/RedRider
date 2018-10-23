@@ -53,6 +53,8 @@ public class MatchPresenter implements MatchContract.Presenter {
 
         postsToShow = postRepository.getPosts();
 
+
+
         processPosts(postsToShow);
 
 
@@ -62,11 +64,24 @@ public class MatchPresenter implements MatchContract.Presenter {
         if(postList.isEmpty()){
             processNoPosts();
         }else{
-            mMatchView.showPost(postList.get(0));
+            Post[] postArray = postList.toArray(new Post[0]);
+
+            List<String> destArray = new ArrayList<String>();
+
+            for(int i = 0; i<postList.size(); i++){
+                destArray.add(postList.get(i).getDestination());
+            }
+
+            String[] arr = {"hi", "there", "fame"};
+            mMatchView.showPost(destArray.toArray(new String[destArray.size()]));
+            //mMatchView.showPost(arr);
         }
     }
 
     public void processNoPosts(){
 
     }
+
+
+
 }
