@@ -248,6 +248,7 @@ public class DBmanager {
 		query = "select * from riderpost where RiderID="+ userID;
 		
 		returninglist = quickSort(returninglist);
+		Collections.reverse(returninglist);
 		return returninglist;
 	}
 
