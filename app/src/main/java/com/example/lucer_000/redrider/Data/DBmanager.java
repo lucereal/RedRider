@@ -207,6 +207,7 @@ public class DBmanager {
 		return -1;
 	}
 
+	
 	ArrayList<Post> getposts(int userID) {
 		java.sql.Connection con = forcreation.MakeConnection();
 		ArrayList<Post> returninglist = new ArrayList<Post>();
@@ -247,6 +248,7 @@ public class DBmanager {
 		query = "select * from riderpost where RiderID="+ userID;
 		
 		returninglist = quickSort(returninglist);
+		Collections.reverse(returninglist);
 		return returninglist;
 	}
 
