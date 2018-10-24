@@ -207,6 +207,7 @@ public class DBmanager {
 		return -1;
 	}
 
+	
 	ArrayList<Post> getposts(int userID) {
 		java.sql.Connection con = forcreation.MakeConnection();
 		ArrayList<Post> returninglist = new ArrayList<Post>();
@@ -216,7 +217,7 @@ public class DBmanager {
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				Driver temp=new Driver();
-				temp.Date=rs.getString("Date");
+				temp.date=rs.getString("Date");
 				temp.destination=rs.getString("DestinationID");
 				temp.driverId=userID;
 				temp.seats=rs.getInt("Seats");
@@ -233,7 +234,7 @@ public class DBmanager {
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				Rider temp=new Rider();
-				temp.Date=rs.getString("Date");
+				temp.date=rs.getString("Date");
 				temp.destination=rs.getString("DestinationID");
 				temp.riderId=userID;
 				temp.time=rs.getString("Time");
@@ -261,7 +262,7 @@ public class DBmanager {
 		Post pivot = list.get(list.size() - 1); // Use last Post as pivot
 		for (int i = 0; i < list.size() - 1; i++) {
 			// int order = list.get(i).compareTo(pivot);
-			if (list.get(i).Date.compareTo(pivot.Date) < 0)
+			if (list.get(i).date.compareTo(pivot.date) < 0)
 				lesser.add(list.get(i));
 			else
 				greater.add(list.get(i));
