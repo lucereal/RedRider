@@ -13,7 +13,11 @@ public interface PostContract {
     interface Presenter extends BasePresenter{
 
         void setSubmitBtn();
-        void submitNewPost(String dest,String date);
-        void submitNewPost(String dest,String date,String comp,String numSeats);
+        //destination.getText().toString(),date.getText().toString(), time.getText().toString());
+        void submitNewPost(String dest,String date, String time);
+
+
+        //destination.getText().toString(),date.getText().toString(),seats.getText().toString(),time.getText().toString(),vehicle.getText().toString()
+        void submitNewPost(String dest, String date, String seats, String time, String vehicle);
     }
 }

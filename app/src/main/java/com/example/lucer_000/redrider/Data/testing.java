@@ -1,6 +1,7 @@
 package com.example.lucer_000.redrider.Data;
 
 import java.util.ArrayList;
+import com.example.lucer_000.redrider.Data.Driver;
 
 public class testing {
 
@@ -15,7 +16,7 @@ public class testing {
 	test.setTime("10:30");
 	test.setVehicle("Big Truck");
 	
-	ArrayList<post> temp = null;
+	ArrayList<Post> temp = null;
 	
 	temp.add(test);
 	

@@ -1,7 +1,8 @@
 package com.example.lucer_000.redrider.Data;
 
 import java.sql.*;
-import java.sql.Driver;
+import com.example.lucer_000.redrider.Data.Driver;
+import com.example.lucer_000.redrider.Data.Rider;
 
 
 public class DBmanager {
@@ -102,7 +103,7 @@ public class DBmanager {
 	}
 	
 	
-	int makepost(java.sql.Driver input) {
+	int makepost(Driver input) {
 		String query="insert into driverpost(DriverID, Vehicle, DestinationID, Time, Date, Seats) values(?,?,?,?,?,?)";
 		java.sql.Connection con = forcreation.MakeConnection();
 		int postID=getdrivepostID(input);

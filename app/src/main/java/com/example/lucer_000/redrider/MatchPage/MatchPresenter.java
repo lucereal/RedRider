@@ -68,13 +68,13 @@ public class MatchPresenter implements MatchContract.Presenter {
 
             List<String> destArray = new ArrayList<String>();
 
-            for(int i = 0; i<postList.size(); i++){
-                destArray.add(postList.get(i).getDestination());
-            }
+//            for(int i = 0; i<postList.size(); i++){
+//                destArray.add(postList.get(i).getDestination());
+//            }
 
             String[] arr = {"hi", "there", "fame"};
-            mMatchView.showPost(destArray.toArray(new String[destArray.size()]));
-            //mMatchView.showPost(arr);
+            //mMatchView.showPost(destArray.toArray(new String[destArray.size()]));
+            mMatchView.showPost(arr);
         }
     }
 

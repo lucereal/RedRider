@@ -28,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.lucer_000.redrider.Data.DriverPost;
+import com.example.lucer_000.redrider.Data.Driver;
 import com.example.lucer_000.redrider.Data.Post;
 import com.example.lucer_000.redrider.Post.PostActivity;
 import com.example.lucer_000.redrider.R;
@@ -168,14 +168,14 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
             TextView dest = (TextView) convertView.findViewById(R.id.postDest);
             TextView date= (TextView) convertView.findViewById(R.id.postDate);
 
-            if(post instanceof DriverPost){
-
-            }
-            TextView comp = convertView.findViewById(R.id.postComp);
-            TextView numSeats = convertView.findViewById(R.id.postSeats);
-            // Populate the data into the template view using the data object
-            dest.setText(post.getDestination());
-            date.setText(post.getDate());
+//            if(post instanceof DriverPost){
+//
+//            }
+//            TextView comp = convertView.findViewById(R.id.postComp);
+//            TextView numSeats = convertView.findViewById(R.id.postSeats);
+//            // Populate the data into the template view using the data object
+//            dest.setText(post.getDestination());
+//            date.setText(post.getDate());
 
 
             // Return the completed view to render on screen

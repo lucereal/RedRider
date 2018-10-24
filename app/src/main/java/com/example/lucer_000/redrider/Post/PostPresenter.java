@@ -5,8 +5,8 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.lucer_000.redrider.Data.DriverPost;
-import com.example.lucer_000.redrider.Data.RiderPost;
+import com.example.lucer_000.redrider.Data.Driver;
+import com.example.lucer_000.redrider.Data.Rider;
 import com.example.lucer_000.redrider.Data.PostRepository;
 
 public class PostPresenter implements PostContract.Presenter {
@@ -32,19 +32,23 @@ public class PostPresenter implements PostContract.Presenter {
     }
 
     @Override
-    public void submitNewPost(String dest, String date){
-        RiderPost riderPost = new RiderPost(dest,date);
+    public void submitNewPost(String dest,String date, String time){
+        //public Rider(String date, String destination, int riderId, String time)
+        Rider riderPost = new Rider(dest,date, 1234, time);
         postRepository.savePost(riderPost);
 
+        System.out.println("inside rider submit post");
         mPostView.submitPostSuccess();
         //come back to this later and create a Post class with a user post list
     }
     @Override
-    public void submitNewPost(String dest, String date, String comp, String numSeats){
+    public void submitNewPost(String dest, String date, String seats, String time, String vehicle){
 
-        DriverPost driverPost = new DriverPost(dest,date,comp,Integer.valueOf(numSeats));
-        postRepository.savePost(driverPost);
+        //String dest, String date, int driverId, int seats, String time, String vehicle
+        Driver driverPost = new Driver(dest,date,1234,1,time,vehicle);
+        //postRepository.savePost(driverPost);
 
+        System.out.println("inside driver submit post");
         mPostView.submitPostSuccess();
         //come back to this later and create a Post class with a user post list
     }
