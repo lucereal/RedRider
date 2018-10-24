@@ -19,14 +19,39 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.example.lucer_000.redrider.R;
+import com.example.lucer_000.redrider.Register.RegisterActivity;
 
 public class LoginFragment extends Fragment implements LoginContract.View{
 
     LoginContract.Presenter mPresenter;
+    View root;
+    private TextView signUp;
 
     @Override
     public void setPresenter(@NonNull LoginContract.Presenter presenter) {
         mPresenter = presenter;
     }
 
+    public LoginFragment(){}
+    //empty constructor
+
+    public static LoginFragment newInstance(){
+        return new LoginFragment();
+    }
+
+    public void setSignUp(){
+
+        signUp = (TextView) root.findViewById(R.id.signup);
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRegister();
+            }
+        });
+    }
+
+    public void openRegister(){
+        Intent intent = new Intent(root.getContext(), RegisterActivity.class);
+        startActivity(intent);
+    }
 }

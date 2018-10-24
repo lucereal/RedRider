@@ -134,7 +134,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
         listView.setAdapter(adapter);
     }
 
-    private static class PostAdapter extends ArrayAdapter<Post>{
+   private static class PostAdapter extends ArrayAdapter<Post>{
 
         private List<Post> mPosts;
 

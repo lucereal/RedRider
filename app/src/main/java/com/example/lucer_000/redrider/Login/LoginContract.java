@@ -8,9 +8,10 @@ import com.example.lucer_000.redrider.MatchPage.MatchContract;
 public interface LoginContract {
 
     interface View extends BaseView<Presenter>{
-
+        void setSignUp();
     }
     interface Presenter extends BasePresenter{
-
+       
+        void openRegister();
     }
 }

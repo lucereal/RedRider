@@ -1,6 +1,6 @@
 package com.example.lucer_000.redrider.Data;
 
-public class Rider extends post{
+public class Rider extends Post{
 	String date;
 	String destination;
 	int riderId;

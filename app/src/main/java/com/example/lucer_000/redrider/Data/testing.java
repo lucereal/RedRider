@@ -15,13 +15,13 @@ public class testing {
 	test.setTime("10:30");
 	test.setVehicle("Big Truck");
 	
-	ArrayList<post> temp = null;
+	//ArrayList<post> temp = null;
 	
-	temp.add(test);
+	/*temp.add(test);
 	
 	if (temp.get(0) instanceof Driver) {
 	Driver temp1 = (Driver) temp.get(0);
 	System.out.println((temp1).getDate());
-	}
+	}*/
 }
 }
