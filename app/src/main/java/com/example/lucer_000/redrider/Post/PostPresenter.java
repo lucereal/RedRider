@@ -5,8 +5,8 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.lucer_000.redrider.Data.DriverPost;
-import com.example.lucer_000.redrider.Data.RiderPost;
+import com.example.lucer_000.redrider.Data.Driver;
+import com.example.lucer_000.redrider.Data.Rider;
 import com.example.lucer_000.redrider.Data.PostRepository;
 
 public class PostPresenter implements PostContract.Presenter {
@@ -33,7 +33,7 @@ public class PostPresenter implements PostContract.Presenter {
 
     @Override
     public void submitNewPost(String dest, String date){
-        RiderPost riderPost = new RiderPost(dest,date);
+        Rider riderPost = new Rider(dest,date);
         postRepository.savePost(riderPost);
 
         mPostView.submitPostSuccess();
@@ -42,7 +42,7 @@ public class PostPresenter implements PostContract.Presenter {
     @Override
     public void submitNewPost(String dest, String date, String comp, String numSeats){
 
-        DriverPost driverPost = new DriverPost(dest,date,comp,Integer.valueOf(numSeats));
+        Driver driverPost = new Driver(dest,date,comp,Integer.valueOf(numSeats));
         postRepository.savePost(driverPost);
 
         mPostView.submitPostSuccess();

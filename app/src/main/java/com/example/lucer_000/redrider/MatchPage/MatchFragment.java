@@ -28,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.lucer_000.redrider.Data.DriverPost;
+import com.example.lucer_000.redrider.Data.Driver;
 import com.example.lucer_000.redrider.Data.Post;
 import com.example.lucer_000.redrider.Post.PostActivity;
 import com.example.lucer_000.redrider.R;
@@ -168,7 +168,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
             TextView dest = (TextView) convertView.findViewById(R.id.postDest);
             TextView date= (TextView) convertView.findViewById(R.id.postDate);
 
-            if(post instanceof DriverPost){
+            if(post instanceof Driver){
 
             }
             TextView comp = convertView.findViewById(R.id.postComp);

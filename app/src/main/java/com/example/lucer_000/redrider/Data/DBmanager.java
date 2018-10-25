@@ -102,7 +102,7 @@ public class DBmanager {
 	}
 	
 	
-	int makepost(java.sql.Driver input) {
+	int makepost(Driver input) {
 			String query="insert into driverpost(DriverID, Vehicle, DestinationID, Time, Date, Seats) values(?,?,?,?,?,?)";
 			java.sql.Connection con = forcreation.MakeConnection();
 			int postID=getdrivepostID(input);
@@ -111,7 +111,7 @@ public class DBmanager {
 				return postID;
 			try {
 				PreparedStatement stmt = con.prepareStatement(query);
-				stmt.setInt(1, input.driverId);
+				stmt.setInt(1, input);
 				stmt.setString(2, input.vehicle);
 				stmt.setString(3, input.destination);
 				stmt.setString(4, input.time);
