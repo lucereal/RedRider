@@ -39,8 +39,10 @@ public class PostFragment extends Fragment implements PostContract.View{
     View root;
     private TextView destination;
     private TextView date;
-    private TextView compensation;
-    private TextView numSeats;
+    private TextView vehicle;
+    private TextView seats;
+    private TextView time;
+
     private boolean driver;
     Button riderBtn;
     Button driverBtn;
@@ -169,12 +171,18 @@ public class PostFragment extends Fragment implements PostContract.View{
 
                 destination = root.findViewById(R.id.dest);
                 date = root.findViewById(R.id.date);
+                time = root.findViewById(R.id.time);
                 if(driver){
-                    compensation = root.findViewById(R.id.compensation);
-                    numSeats = root.findViewById(R.id.numSeats);
-                    mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString(),compensation.getText().toString(),numSeats.getText().toString());
+
+                    seats = root.findViewById(R.id.seats);
+                    vehicle = root.findViewById(R.id.vehicle);
+
+                    //String dest,String date, String riderId, String time
+                    mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString(),seats.getText().toString(),time.getText().toString(),vehicle.getText().toString());
                 }else{
-                    mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString());
+
+                    //String dest, String date, String driverId, String seats, String time, String vehicle
+                    mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString(), time.getText().toString());
                 }
 
 
