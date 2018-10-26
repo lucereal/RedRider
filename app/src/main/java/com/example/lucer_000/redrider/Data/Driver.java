@@ -1,9 +1,7 @@
 package com.example.lucer_000.redrider.Data;
 
-
-
 public class Driver extends Post{
-	String date;
+
 	String destination;
 	int driverId;
 	int seats;

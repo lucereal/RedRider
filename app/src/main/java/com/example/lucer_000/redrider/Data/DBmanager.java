@@ -139,43 +139,13 @@ public class DBmanager {
 		return postID;
 	}
 
-
-/*	int makepost(Driver input) {
-			String query="insert into driverpost(DriverID, Vehicle, DestinationID, Time, Date, Seats) values(?,?,?,?,?,?)";
-			java.sql.Connection con = forcreation.MakeConnection();
-			int postID=getdrivepostID(input);
-
-			if(postID > 0)
-				return postID;
-			try {
-				PreparedStatement stmt = con.prepareStatement(query);
-				//stmt.setInt(1, input.driverId);
-				//stmt.setString(2, input.vehicle);
-				stmt.setString(3, input.destination);
-				stmt.setString(4, input.time);
-				stmt.setString(5, input.date);
-				//stmt.setInt(6,input.seats);
-				stmt.execute();
-				//System.out.println("exe");
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
-			postID=getdrivepostID(input);
-
-			try {
-				con.close();
-			} catch (SQLException e) {
-				System.out.println("makedrivepost failed to close connection");
-				e.printStackTrace();
-			}
-		
-		return postID;
-	}*/
-	
-	
-	
-	
-	
+	// **Overloaded**
+	// Used to create a drivers post and push to database
+	// Value of type driver needs to be sent
+	// The method will check if the driver post already exists and if it does it
+	// will return the postID
+	// If the post does not exists already then it will add to database then return
+	// the postID
 
 	// **Overloaded**
 	// Used to create a drivers post and push to database
