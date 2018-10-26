@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Login.LoginActivity"
-    tools:showIn="@layout/login_act"
-    android:background="@drawable/gradientbackground">
+    tools:context=".Login.LoginActivity">
 
     <EditText
         android:id="@+id/emailId"
@@ -20,8 +18,8 @@
         android:background="@color/colorWhite"
         android:ems="10"
         android:hint=" E-mail"
-        android:inputType="textPersonName|textWebEmailAddress"
-        android:textColor="@color/colorWhite"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -49,7 +47,7 @@
         app:layout_constraintVertical_bias="0.004" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/logIn"
         android:layout_width="261dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -111,7 +109,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/logIn"
         app:layout_constraintVertical_bias="0.341" />
 
 </android.support.constraint.ConstraintLayout>

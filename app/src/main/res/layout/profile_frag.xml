@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Profile.ProfileActivity"
-    tools:showIn="@layout/profile_act"
-    android:background="@drawable/gradientbackground">
+    tools:showIn="@layout/profile_act">
 
 
     <de.hdodenhof.circleimageview.CircleImageView

@@ -13,7 +13,6 @@ import com.example.lucer_000.redrider.util.ActivityUtils;
 
 public class LoginActivity extends AppCompatActivity {
 
-
     LoginPresenter mLoginPresenter;
 
     @Override
@@ -31,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         mLoginPresenter = new LoginPresenter(Injection.provideTasksRepository(getApplicationContext()),loginFragment);
-
 
     }
 

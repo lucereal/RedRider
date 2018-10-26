@@ -1,5 +1,7 @@
 package com.example.lucer_000.redrider.Data;
 
+
+
 public class Driver extends Post{
 	String date;
 	String destination;
@@ -7,13 +9,20 @@ public class Driver extends Post{
 	int seats;
 	String time;
 	String vehicle;
-	
-	public String getDate() {
-		return date;
+
+	public Driver(){}
+	//dest,date,1234,1,time,vehicle
+	public Driver(String dest, String date, int driverId, int seats, String time, String vehicle){
+	    super(date);
+
+		destination = dest;
+		this.driverId = driverId;
+		this.seats = seats;
+		this.time = time;
+		this.vehicle = vehicle;
 	}
-	public void setDate(String date) {
-		this.date = date;
-	}
+
+
 	public String getDestination() {
 		return destination;
 	}

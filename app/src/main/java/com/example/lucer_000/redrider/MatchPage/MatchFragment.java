@@ -168,14 +168,14 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
             TextView dest = (TextView) convertView.findViewById(R.id.postDest);
             TextView date= (TextView) convertView.findViewById(R.id.postDate);
 
-            if(post instanceof Driver){
-
-            }
-            TextView comp = convertView.findViewById(R.id.postComp);
-            TextView numSeats = convertView.findViewById(R.id.postSeats);
-            // Populate the data into the template view using the data object
-            dest.setText(post.getDestination());
-            date.setText(post.getDate());
+//            if(post instanceof DriverPost){
+//
+//            }
+//            TextView comp = convertView.findViewById(R.id.postComp);
+//            TextView numSeats = convertView.findViewById(R.id.postSeats);
+//            // Populate the data into the template view using the data object
+//            dest.setText(post.getDestination());
+//            date.setText(post.getDate());
 
 
             // Return the completed view to render on screen

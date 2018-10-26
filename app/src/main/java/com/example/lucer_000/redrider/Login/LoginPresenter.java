@@ -22,8 +22,4 @@ public class LoginPresenter implements LoginContract.Presenter{
         //openTask();
     }
 
-    /*public void openRegister(){
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
-    }*/
 }

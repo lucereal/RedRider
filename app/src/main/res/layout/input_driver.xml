@@ -12,6 +12,7 @@
     android:inputType="text"
     />
 
+    <!--//String dest, String date, String driverId, String seats, String time, String vehicle-->
 
     <EditText
     android:id="@+id/date"
@@ -20,8 +21,9 @@
     android:hint="@string/date_hint"
     android:inputType="text"
    />
+
     <EditText
-        android:id="@+id/compensation"
+        android:id="@+id/seats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/compensation"
@@ -29,8 +31,9 @@
         />
 
 
+
     <EditText
-        android:id="@+id/numSeats"
+        android:id="@+id/vehicle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/numSeats"
