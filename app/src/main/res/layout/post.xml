@@ -6,23 +6,27 @@
     android:id="@+id/postDest"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+        android:text="hi"
      />
     <TextView
         android:id="@+id/postDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="hi"
         />
     <TextView
         android:id="@+id/postComp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:text="hi"
          />
     <TextView
         android:id="@+id/postSeats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:text="hi"
         />
 
 

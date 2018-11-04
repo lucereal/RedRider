@@ -2,6 +2,8 @@ package com.example.lucer_000.redrider.MatchPage;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+
+import com.example.lucer_000.redrider.Data.Driver;
 import com.example.lucer_000.redrider.Data.Injection;
 import com.example.lucer_000.redrider.Data.PostRepository;
 import com.example.lucer_000.redrider.Data.Post;
@@ -71,6 +73,8 @@ public class MatchPresenter implements MatchContract.Presenter {
 //            for(int i = 0; i<postList.size(); i++){
 //                destArray.add(postList.get(i).getDestination());
 //            }
+
+
 
             String[] arr = {"hi", "there", "fame"};
             //mMatchView.showPost(destArray.toArray(new String[destArray.size()]));

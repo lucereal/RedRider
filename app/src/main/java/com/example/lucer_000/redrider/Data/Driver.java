@@ -11,7 +11,7 @@ public class Driver extends Post{
 	public Driver(){}
 	//dest,date,1234,1,time,vehicle
 	public Driver(String dest, String date, int driverId, int seats, String time, String vehicle){
-	    super(date);
+	    this.date = date;
 
 		destination = dest;
 		this.driverId = driverId;

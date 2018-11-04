@@ -130,61 +130,62 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
     public void showPost(String[] postArray){
         //root.findViewById(R.id.showpoststemp).setVisibility(View.VISIBLE);
 
-        adapter = new ArrayAdapter<String>(getContext(),R.layout.post,postArray);
+        adapter = new ArrayAdapter<String>(getContext(),R.layout.posttext,postArray);
         listView.setAdapter(adapter);
     }
 
-    private static class PostAdapter extends ArrayAdapter<Post>{
-
-        private List<Post> mPosts;
-
-        public PostAdapter(Context context, ArrayList<Post> posts) {
-            super(context, 0, posts);
-        }
-
-
-
-
-        @Override
-        public Post getItem(int i) {
-            return mPosts.get(i);
-        }
-
-        private void setList(List<Post> tasks) {
-            mPosts = tasks;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            // Get the data item for this position
-            Post post = getItem(position);
-
-            // Check if an existing view is being reused, otherwise inflate the view
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.post, parent, false);
-            }
-            // Lookup view for data population
-            TextView dest = (TextView) convertView.findViewById(R.id.postDest);
-            TextView date= (TextView) convertView.findViewById(R.id.postDate);
-
-//            if(post instanceof DriverPost){
 //
-//            }
-//            TextView comp = convertView.findViewById(R.id.postComp);
-//            TextView numSeats = convertView.findViewById(R.id.postSeats);
-//            // Populate the data into the template view using the data object
-//            dest.setText(post.getDestination());
-//            date.setText(post.getDate());
-
-
-            // Return the completed view to render on screen
-            return convertView;
-        }
-
-
-
-    }
+////    private static class PostAdapter extends ArrayAdapter<Post>{
+////
+////        private List<Post> mPosts;
+////
+////        public PostAdapter(Context context, ArrayList<Post> posts) {
+////            super(context, 0, posts);
+////        }
+////
+////
+////
+////
+////        @Override
+////        public Post getItem(int i) {
+////            return mPosts.get(i);
+////        }
+////
+////        private void setList(List<Post> tasks) {
+////            mPosts = tasks;
+////        }
+////
+////        @Override
+////        public View getView(int position, View convertView, ViewGroup parent) {
+////
+////            // Get the data item for this position
+////            Post post = getItem(position);
+////
+////            // Check if an existing view is being reused, otherwise inflate the view
+////            if (convertView == null) {
+////                convertView = LayoutInflater.from(getContext()).inflate(R.layout.post, parent, false);
+////            }
+////            // Lookup view for data population
+//////            TextView dest = (TextView) convertView.findViewById(R.id.postDest);
+//////            TextView date= (TextView) convertView.findViewById(R.id.postDate);
+////
+//////            if(post instanceof DriverPost){
+//////
+//////            }
+//////            TextView comp = convertView.findViewById(R.id.postComp);
+//////            TextView numSeats = convertView.findViewById(R.id.postSeats);
+//////            // Populate the data into the template view using the data object
+//////            dest.setText(post.getDestination());
+//////            date.setText(post.getDate());
+////
+////
+////            // Return the completed view to render on screen
+////            return convertView;
+////        }
+//
+//
+//
+//    }
 
 
 }
