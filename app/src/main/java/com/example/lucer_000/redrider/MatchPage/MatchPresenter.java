@@ -2,7 +2,7 @@ package com.example.lucer_000.redrider.MatchPage;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
-
+import android.content.Context;
 import com.example.lucer_000.redrider.Data.Driver;
 import com.example.lucer_000.redrider.Data.Injection;
 import com.example.lucer_000.redrider.Data.PostRepository;
@@ -11,17 +11,25 @@ import com.example.lucer_000.redrider.Data.Post;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.lucer_000.redrider.util.ActivityUtils;
+import com.example.lucer_000.redrider.util.HttpUtils;
+import com.example.lucer_000.redrider.util.Volleycallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MatchPresenter implements MatchContract.Presenter {
 
     //initialize database class
 
+    Context context;
     private final MatchContract.View mMatchView;
 
     private PostRepository postRepository;
 
-    public MatchPresenter(PostRepository postRepository,@NonNull MatchContract.View matchView){
+    public MatchPresenter(PostRepository postRepository,@NonNull MatchContract.View matchView, Context context){
        // mMatchView = checkNotNull(matchView, "matchView cannot be null!");
+        this.context = context;
         mMatchView = matchView;
         this.postRepository = postRepository;
         mMatchView.setPresenter(this);
@@ -51,6 +59,12 @@ public class MatchPresenter implements MatchContract.Presenter {
     }
 
     public void loadPosts(){
+
+
+
+
+
+
         List<Post> postsToShow = new ArrayList<Post>();
 
         postsToShow = postRepository.getPosts();
@@ -85,6 +99,44 @@ public class MatchPresenter implements MatchContract.Presenter {
     public void processNoPosts(){
 
     }
+
+    public void makeRequest(){
+
+        HttpUtils httpReq = new HttpUtils(context);
+
+        JSONObject jsonBody;
+        try{
+            jsonBody = new JSONObject();
+            jsonBody.put("email","cadewall@ttu.edu");
+            jsonBody.put("password", "password");
+
+            httpReq.makePost(jsonBody, new Volleycallback() {
+                @Override
+                public Void onSuccess(JSONObject response) {
+                    System.out.println("made it");
+                    try{
+                        System.out.println("success: " + response.get("success"));
+                        JSONObject user = response.getJSONObject("user");
+
+                        System.out.println(user.get("email"));
+                        System.out.println(user.get("password"));
+
+                    }catch(JSONException e){
+                        e.printStackTrace();
+                    }
+
+                    return null;
+                }
+            });
+
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+
+
+
+
+    }//end makeRequest
 
 
 
