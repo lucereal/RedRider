@@ -2,7 +2,7 @@ package com.example.lucer_000.redrider.Data;
 
 
 import android.content.Context;
-
+import com.example.lucer_000.redrider.util.HttpUtils;
 
 
 public class Injection {
@@ -11,4 +11,6 @@ public class Injection {
 
         return PostRepository.getInstance();
     }
+
+
 }

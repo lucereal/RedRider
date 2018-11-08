@@ -7,7 +7,7 @@ import com.example.lucer_000.redrider.Data.Driver;
 import com.example.lucer_000.redrider.Data.Injection;
 import com.example.lucer_000.redrider.Data.PostRepository;
 import com.example.lucer_000.redrider.Data.Post;
-
+import com.example.lucer_000.redrider.Data.Profile;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,16 +60,9 @@ public class MatchPresenter implements MatchContract.Presenter {
 
     public void loadPosts(){
 
-
-
-
-
-
         List<Post> postsToShow = new ArrayList<Post>();
 
         postsToShow = postRepository.getPosts();
-
-
 
         processPosts(postsToShow);
 
@@ -80,19 +73,9 @@ public class MatchPresenter implements MatchContract.Presenter {
         if(postList.isEmpty()){
             processNoPosts();
         }else{
-            Post[] postArray = postList.toArray(new Post[0]);
 
-            List<String> destArray = new ArrayList<String>();
-
-//            for(int i = 0; i<postList.size(); i++){
-//                destArray.add(postList.get(i).getDestination());
-//            }
-
-
-
-            String[] arr = {"hi", "there", "fame"};
-            //mMatchView.showPost(destArray.toArray(new String[destArray.size()]));
-            mMatchView.showPost(arr);
+            System.out.println("\n\npostlist size: " + postList.size());
+            mMatchView.showPost(postList);
         }
     }
 
@@ -102,30 +85,31 @@ public class MatchPresenter implements MatchContract.Presenter {
 
     public void makeRequest(){
 
-        HttpUtils httpReq = new HttpUtils(context);
 
         JSONObject jsonBody;
         try{
             jsonBody = new JSONObject();
-            jsonBody.put("email","cadewall@ttu.edu");
+            jsonBody.put("email","cade.wall@ttu.edu");
             jsonBody.put("password", "password");
 
-            httpReq.makePost(jsonBody, new Volleycallback() {
+            HttpUtils.getInstance(context).makePost(jsonBody, new Volleycallback() {
                 @Override
-                public Void onSuccess(JSONObject response) {
+                public void onSuccess(JSONObject response) {
                     System.out.println("made it");
                     try{
                         System.out.println("success: " + response.get("success"));
                         JSONObject user = response.getJSONObject("user");
+                        Profile returnguy = new Profile();
+                        returnguy.setEmail(user.get("Email").toString());
+                        System.out.println(user.get("Password"));
 
-                        System.out.println(user.get("email"));
-                        System.out.println(user.get("password"));
+
 
                     }catch(JSONException e){
                         e.printStackTrace();
                     }
 
-                    return null;
+                    //return null;
                 }
             });
 

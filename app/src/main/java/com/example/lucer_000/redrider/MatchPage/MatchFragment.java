@@ -1,5 +1,6 @@
 package com.example.lucer_000.redrider.MatchPage;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,10 +31,13 @@ import android.widget.TextView;
 
 import com.example.lucer_000.redrider.Data.Driver;
 import com.example.lucer_000.redrider.Data.Post;
+import com.example.lucer_000.redrider.Data.Rider;
 import com.example.lucer_000.redrider.Post.PostActivity;
 import com.example.lucer_000.redrider.R;
 
 import android.support.annotation.Nullable;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +51,10 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
     View root;
     ListView listView;
-    ArrayAdapter<String> adapter;
+    private ArrayAdapter adapter;
     TextView postView;
     Button button;
-
+    TextView emailView;
 
 
     public MatchFragment(){}
@@ -86,6 +90,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
         //mPresenter.result(requestCode, resultCode);
     }
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -112,6 +117,9 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
         button = root.findViewById(R.id.requestbutton);
 
+
+
+        //emailView.setText("hi");
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -126,6 +134,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
         return root;
     }
 
+
     @Override
     public void showAddPost(){
         Intent intent = new Intent(getContext(), PostActivity.class);
@@ -135,65 +144,88 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
 
     @Override
-    public void showPost(String[] postArray){
-        //root.findViewById(R.id.showpoststemp).setVisibility(View.VISIBLE);
+    public void showPost(List<Post> postArray){
 
-        adapter = new ArrayAdapter<String>(getContext(),R.layout.posttext,postArray);
+        adapter = new PostAdapter(getContext(),postArray);
         listView.setAdapter(adapter);
+
     }
 
-//
-////    private static class PostAdapter extends ArrayAdapter<Post>{
-////
-////        private List<Post> mPosts;
-////
-////        public PostAdapter(Context context, ArrayList<Post> posts) {
-////            super(context, 0, posts);
-////        }
-////
-////
-////
-////
-////        @Override
-////        public Post getItem(int i) {
-////            return mPosts.get(i);
-////        }
-////
-////        private void setList(List<Post> tasks) {
-////            mPosts = tasks;
-////        }
-////
-////        @Override
-////        public View getView(int position, View convertView, ViewGroup parent) {
-////
-////            // Get the data item for this position
-////            Post post = getItem(position);
-////
-////            // Check if an existing view is being reused, otherwise inflate the view
-////            if (convertView == null) {
-////                convertView = LayoutInflater.from(getContext()).inflate(R.layout.post, parent, false);
-////            }
-////            // Lookup view for data population
-//////            TextView dest = (TextView) convertView.findViewById(R.id.postDest);
-//////            TextView date= (TextView) convertView.findViewById(R.id.postDate);
-////
-//////            if(post instanceof DriverPost){
-//////
-//////            }
-//////            TextView comp = convertView.findViewById(R.id.postComp);
-//////            TextView numSeats = convertView.findViewById(R.id.postSeats);
-//////            // Populate the data into the template view using the data object
-//////            dest.setText(post.getDestination());
-//////            date.setText(post.getDate());
-////
-////
-////            // Return the completed view to render on screen
-////            return convertView;
-////        }
-//
-//
-//
-//    }
+
+
+    private static class PostAdapter extends ArrayAdapter<Post>{
+
+        private List<Post> mPosts = new ArrayList<>();
+        private Context context;
+        private List<Post> postList = new ArrayList<>();
+
+        public PostAdapter(Context context, List<Post> posts) {
+            super(context, 0, posts);
+            this.context = context;
+            mPosts = posts;
+
+        }
+
+        @Override
+        public Post getItem(int i) {
+            return mPosts.get(i);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            View listItem = convertView;
+
+            // Get the data item for this position
+            Post currentPost = getItem(position);
+
+            if(currentPost instanceof Driver){
+                if (listItem == null) {
+                    listItem = LayoutInflater.from(context).inflate(R.layout.driverpost, parent, false);
+                }
+
+                System.out.println("IS DRIVER");
+
+                TextView dest = (TextView) listItem.findViewById(R.id.postDestDriver);
+                TextView date= (TextView) listItem.findViewById(R.id.postDateDriver);
+                TextView vehicle = listItem.findViewById(R.id.postVehicleDriver);
+                TextView seats = listItem.findViewById(R.id.postSeatsDriver);
+                TextView time = listItem.findViewById(R.id.postTimeDriver);
+
+                System.out.println("\n\ncurrentPost.getDestination(): " + currentPost.getDestination());
+
+                dest.setText(currentPost.getDestination());
+                date.setText(currentPost.getDate());
+                time.setText(((Driver) currentPost).getTime());
+                vehicle.setText(((Driver) currentPost).getVehicle());
+                int seatInt = ((Driver) currentPost).getSeats();
+                seats.setText(Integer.toString(seatInt));
+
+
+            }else if(currentPost instanceof Rider){
+                // Check if an existing view is being reused, otherwise inflate the view
+                if (listItem == null) {
+                    listItem = LayoutInflater.from(context).inflate(R.layout.post, parent, false);
+                }
+
+                System.out.println("IS RIDER");
+
+                TextView dest = (TextView) listItem.findViewById(R.id.postDest);
+                TextView date= (TextView) listItem.findViewById(R.id.postDate);
+                TextView time= (TextView) listItem.findViewById(R.id.postTime);
+
+                dest.setText(currentPost.getDestination());
+                date.setText(currentPost.getDate());
+                time.setText(((Rider) currentPost).getTime());
+            }
+
+            // Return the completed view to render on screen
+            return listItem;
+        }//end getView
+
+
+
+    }//end adapter class
 
 
 }

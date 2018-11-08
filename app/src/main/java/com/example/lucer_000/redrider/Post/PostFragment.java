@@ -169,18 +169,24 @@ public class PostFragment extends Fragment implements PostContract.View{
             @Override
             public void onClick(View v) {
 
-                destination = root.findViewById(R.id.dest);
-                date = root.findViewById(R.id.date);
-                time = root.findViewById(R.id.time);
+
                 if(driver){
-
-                    seats = root.findViewById(R.id.seats);
-                    vehicle = root.findViewById(R.id.vehicle);
-
+                    destination = root.findViewById(R.id.destdriver);
+                    date = root.findViewById(R.id.datedriver);
+                    time = root.findViewById(R.id.timedriver);
+                    seats = root.findViewById(R.id.seatsdriver);
+                    vehicle = root.findViewById(R.id.vehicledriver);
+                    System.out.println("destination: "+ destination.getText().toString());
+                    System.out.println("seats: "+ seats.getText());
+                    System.out.println("date: "+ date.getText());
                     //String dest,String date, String riderId, String time
                     mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString(),seats.getText().toString(),time.getText().toString(),vehicle.getText().toString());
                 }else{
-
+                    destination = root.findViewById(R.id.dest);
+                    date = root.findViewById(R.id.date);
+                    time = root.findViewById(R.id.time);
+                    System.out.println("destination: "+ destination.getText().toString());
+                    System.out.println("date: "+ date.getText());
                     //String dest, String date, String driverId, String seats, String time, String vehicle
                     mPresenter.submitNewPost(destination.getText().toString(),date.getText().toString(), time.getText().toString());
                 }

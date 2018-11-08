@@ -2,7 +2,7 @@ package com.example.lucer_000.redrider.Data;
 
 public class Rider extends Post{
 
-	String destination;
+
 	int riderId;
 	String time;
 
@@ -15,12 +15,7 @@ public class Rider extends Post{
 		this.time = time;
 	}
 
-	public String getDestination() {
-		return destination;
-	}
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
+
 	public int getRiderId() {
 		return riderId;
 	}
