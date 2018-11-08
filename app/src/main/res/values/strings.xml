@@ -14,5 +14,10 @@
     <string name="rider">Rider</string>
     <string name="compensation">Compensation</string>
     <string name="numSeats">Seats Available</string>
+    <string name="sex_prompt">Select a sex</string>
+    <string-array name="sex_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 
 </resources>

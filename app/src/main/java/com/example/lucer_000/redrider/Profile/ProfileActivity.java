@@ -1,31 +1,41 @@
 package com.example.lucer_000.redrider.Profile;
 
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
+import com.example.lucer_000.redrider.Data.Injection;
+import com.example.lucer_000.redrider.Data.Profile;
 import com.example.lucer_000.redrider.R;
+import com.example.lucer_000.redrider.util.ActivityUtils;
+import com.example.lucer_000.redrider.Profile.ProfileFragment;
+
+import java.io.Serializable;
 
 public class ProfileActivity extends AppCompatActivity {
+
+
+    private Profile user;
+    ProfilePresenter mProfilePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_act);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+        ProfileFragment profileFragment =  (ProfileFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
+
+        if(profileFragment == null){
+            profileFragment = ProfileFragment.newInstance();
+            ActivityUtils.addFragmentToActivity(
+                    getSupportFragmentManager(), profileFragment, R.id.contentFrame
+            );
+        }
+
+        mProfilePresenter = new ProfilePresenter(Injection.provideTasksRepository(getApplicationContext()),profileFragment);
+
     }
 
 }

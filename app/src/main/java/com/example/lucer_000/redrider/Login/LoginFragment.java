@@ -3,6 +3,7 @@ package com.example.lucer_000.redrider.Login;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -20,13 +21,18 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.lucer_000.redrider.Data.DBmanager;
+import com.example.lucer_000.redrider.Data.Profile;
 import com.example.lucer_000.redrider.Profile.ProfileActivity;
+import com.example.lucer_000.redrider.Profile.ProfileFragment;
 import com.example.lucer_000.redrider.R;
 import com.example.lucer_000.redrider.Register.RegisterActivity;
 
 import org.w3c.dom.Text;
 
-public class LoginFragment extends Fragment implements LoginContract.View{
+import java.io.Serializable;
+
+public class LoginFragment extends Fragment implements LoginContract.View {
 
     LoginContract.Presenter mPresenter;
     View root;
@@ -34,6 +40,9 @@ public class LoginFragment extends Fragment implements LoginContract.View{
     private Button logIn;
     private EditText email;
     private EditText password;
+
+    DBmanager database = new DBmanager();
+
 
     @Override
     public void setPresenter(@NonNull LoginContract.Presenter presenter) {
@@ -51,8 +60,6 @@ public class LoginFragment extends Fragment implements LoginContract.View{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
-
     }
 
 
@@ -68,14 +75,19 @@ public class LoginFragment extends Fragment implements LoginContract.View{
             }
         });
 
-        logIn = (Button) root.findViewById(R.id.logIn);
-        email = (EditText) root.findViewById(R.id.emailId);
-        password = (EditText) root.findViewById(R.id.password);
+        logIn = root.findViewById(R.id.logIn);
+        email = root.findViewById(R.id.emailId);
+        password = root.findViewById(R.id.password);
 
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn(email.getText().toString(), password.getText().toString());
+
+                /*if(user != null){
+                    Intent intent = new Intent(root.getContext(), ProfileActivity.class);
+                    startActivity(intent);
+                }*/
             }
         });
 

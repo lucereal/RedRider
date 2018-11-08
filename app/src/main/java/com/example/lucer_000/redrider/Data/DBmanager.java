@@ -11,7 +11,7 @@ public class DBmanager {
 	// The return will be the users profile
 	// If the profile could not be found a string will be thrown stating "Profile
 	// not found"
-	Profile login(String email, String password) throws IllegalArgumentException {
+	public Profile login(String email, String password) throws IllegalArgumentException {
 		java.sql.Connection con = forcreation.MakeConnection();
 		Profile foundaccount = new Profile();
 		boolean found = false;
