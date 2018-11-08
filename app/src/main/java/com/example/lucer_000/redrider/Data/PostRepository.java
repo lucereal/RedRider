@@ -12,7 +12,7 @@ public class PostRepository {
     private static PostRepository INSTANCE = null;
 
 
-
+    private Profile mProfile;
     private Map<String, Post> mCachedPosts;
 
 
@@ -44,6 +44,17 @@ public class PostRepository {
             return new ArrayList(mCachedPosts.values());
         }
         return new ArrayList();
+    }
+
+    public Profile getProfile(){
+        if(mProfile != null){
+            return mProfile;
+        }
+        return new Profile();
+    }
+
+    public void setProfile(Profile profile){
+        mProfile = profile;
     }
 
 }
