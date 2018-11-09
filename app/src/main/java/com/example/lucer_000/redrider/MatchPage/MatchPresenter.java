@@ -83,6 +83,12 @@ public class MatchPresenter implements MatchContract.Presenter {
 
     }
 
+    public void test(){
+        Profile test = postRepository.getProfile();
+        System.out.println("test");
+        System.out.println(test.getName());
+    }
+
     public void makeRequest(){
 
 

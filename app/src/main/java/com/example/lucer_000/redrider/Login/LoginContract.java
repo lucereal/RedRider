@@ -9,8 +9,10 @@ public interface LoginContract {
     interface View extends BaseView<Presenter>{
 
         void openRegister();
+        void signInSuccess();
     }
     interface Presenter extends BasePresenter{
+        void signIn(String email, String password);
 
     }
 }

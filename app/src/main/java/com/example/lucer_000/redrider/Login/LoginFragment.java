@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.example.lucer_000.redrider.Data.DBmanager;
 import com.example.lucer_000.redrider.Data.Profile;
+import com.example.lucer_000.redrider.MatchPage.MatchActivity;
 import com.example.lucer_000.redrider.Profile.ProfileActivity;
 import com.example.lucer_000.redrider.Profile.ProfileFragment;
 import com.example.lucer_000.redrider.R;
@@ -82,7 +83,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signIn(email.getText().toString(), password.getText().toString());
+                mPresenter.signIn(email.getText().toString(), password.getText().toString());
 
                 /*if(user != null){
                     Intent intent = new Intent(root.getContext(), ProfileActivity.class);
@@ -101,13 +102,18 @@ public class LoginFragment extends Fragment implements LoginContract.View {
         startActivity(intent);
     }
 
-    public void signIn(String email, String password){
+    public void signInSuccess(){
+        Intent intent = new Intent(root.getContext(), MatchActivity.class);
+        startActivity(intent);
+    }
+
+   /* public void signIn(String email, String password){
         if(email.equals("mayur.bhakta@ttu.edu") && password.equals("testing")){
-            Intent intent = new Intent(root.getContext(), ProfileActivity.class);
+            Intent intent = new Intent(root.getContext(), MatchActivity.class);
             startActivity(intent);
         }
         else{
             System.out.println("Failed");
         }
-    }
+    }*/
 }
