@@ -11,8 +11,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.lucer_000.redrider.Profile.ProfileActivity;
 import com.example.lucer_000.redrider.Data.Injection;
+import com.example.lucer_000.redrider.Profile.ProfileActivity;
 import com.example.lucer_000.redrider.util.ActivityUtils;
 import com.example.lucer_000.redrider.R;
 
@@ -28,16 +32,25 @@ public class MatchActivity extends AppCompatActivity {
 
         setContentView(R.layout.match_act);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         // Set up the navigation drawer.
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
+        //mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
 //        NavigationView navigationView = findViewById(R.id.nav_view);
 //        if (navigationView != null) {
 //            setupDrawerContent(navigationView);
 //        }
+
+        Button profile = findViewById(R.id.profilebutton);
+        profile.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

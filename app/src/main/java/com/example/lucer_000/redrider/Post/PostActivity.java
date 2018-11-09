@@ -1,12 +1,15 @@
 package com.example.lucer_000.redrider.Post;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
+import com.example.lucer_000.redrider.MatchPage.MatchActivity;
 import com.example.lucer_000.redrider.MatchPage.MatchFragment;
 import com.example.lucer_000.redrider.R;
 import com.example.lucer_000.redrider.util.ActivityUtils;
@@ -33,6 +36,15 @@ public class PostActivity extends AppCompatActivity {
 
         }
         mPostPresenter = new PostPresenter(Injection.provideTasksRepository(getApplicationContext()),postFragment);
+
+        Button backbutton = findViewById(R.id.backbutton);
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MatchActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
