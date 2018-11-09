@@ -114,17 +114,17 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
         // Set up tasks view
         listView = root.findViewById(R.id.post_list);
 
-        button = root.findViewById(R.id.requestbutton);
-
-
-
-        //emailView.setText("hi");
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                mPresenter.makeRequest();
-            }
-        });
+//        button = root.findViewById(R.id.requestbutton);
+//
+//
+//
+//        //emailView.setText("hi");
+//        button.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                mPresenter.makeRequest();
+//            }
+//        });
 
 
         //postView = root.findViewById(R.id.postdest);

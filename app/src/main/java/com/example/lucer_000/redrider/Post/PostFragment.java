@@ -110,37 +110,6 @@ public class PostFragment extends Fragment implements PostContract.View{
             }
         });
 
-//        ToggleButton riderBtn = root.findViewById(R.id.rider);
-//        ToggleButton driverBtn = root.findViewById(R.id.driver);
-
-//        riderBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if(isChecked){
-//
-//                    View inputs = inflater.inflate(R.layout.input_rider,container,true);
-//                    //mPresenter.setRiderPostView();z
-//                }
-//            }
-//        });
-
-//        driverBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if(isChecked){
-//                    View input = inflater.inflate(R.layout.input_driver,container,true);
-//                    //mPresenter.setDriverPostView();
-//                }
-//            }
-//        });
-
-
-
-
-
-
-
-
         return root;
     }
 
