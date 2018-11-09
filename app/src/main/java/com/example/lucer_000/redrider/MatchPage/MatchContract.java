@@ -24,7 +24,7 @@ public interface MatchContract {
         void addPost();
 
         void makeRequest();
-
+        void test();
 
     }
 }

@@ -97,8 +97,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                              Bundle savedInstanceState) {
          root = inflater.inflate(R.layout.match_frag, container, false);
 
-
-
+         mPresenter.test();
 
         // Set up floating action button
         FloatingActionButton fab =
@@ -150,8 +149,6 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
         listView.setAdapter(adapter);
 
     }
-
-
 
     private static class PostAdapter extends ArrayAdapter<Post>{
 

@@ -2,12 +2,12 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <!-- we define background color -->
-    <solid android:color="#c0c0c0" />
+    <solid android:color="#ffffff" />
 
     <!-- we define border color and thick -->
     <stroke
         android:width="3dp"
-        android:color="#5b8bc7" />
+        android:color="#edf3ff" />
 
     <!-- add some padding for text inside -->
 

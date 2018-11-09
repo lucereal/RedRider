@@ -18,11 +18,11 @@ public class testing {
 	
 	ArrayList<Post> temp = null;
 	
-	temp.add(test);
+	/*temp.add(test);
 	
 	if (temp.get(0) instanceof Driver) {
 	Driver temp1 = (Driver) temp.get(0);
 	System.out.println((temp1).getDate());
-	}
+	}*/
 }
 }

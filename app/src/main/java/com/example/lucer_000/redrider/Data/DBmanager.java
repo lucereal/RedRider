@@ -11,7 +11,7 @@ public class DBmanager {
 	// The return will be the users profile
 	// If the profile could not be found a string will be thrown stating "Profile
 	// not found"
-	Profile login(String email, String password) throws IllegalArgumentException {
+	public Profile login(String email, String password) throws IllegalArgumentException {
 		java.sql.Connection con = forcreation.MakeConnection();
 		Profile foundaccount = new Profile();
 		boolean found = false;
@@ -146,6 +146,16 @@ public class DBmanager {
 	// will return the postID
 	// If the post does not exists already then it will add to database then return
 	// the postID
+
+	// **Overloaded**
+	// Used to create a drivers post and push to database
+	// Value of type driver needs to be sent
+	// The method will check if the driver post already exists and if it does it
+	// will return the postID
+	// If the post does not exists already then it will add to database then return
+	// the postID
+
+
 	int makepost(Rider input) throws IllegalArgumentException {
 		String query = "insert into riderpost(RiderID, DestinationID, Time, Date) values(?,?,?,?)";
 		java.sql.Connection con = forcreation.MakeConnection();

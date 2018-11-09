@@ -54,8 +54,11 @@ public class PostRepository {
     }
 
     public void setProfile(Profile profile){
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> master
         if(mProfile == null){
             mProfile = new Profile();
         }
