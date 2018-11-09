@@ -136,6 +136,56 @@ app.post('/login', function (req, res) {
 
 })
 
+app.post('/signup', function (req, res) {
+    const params = req.body.params;
+
+    const email = params.email;
+    const password = params.password;
+    const major=params.major;
+    const name=params.name;
+    const age=params.age;
+    const sex=params.sex;
+
+    console.log("email: " + email);
+    console.log("password: " + password);
+    console.log("major: " + major);
+    console.log("sex: "+ sex);
+    console.log("age: " + age);
+    console.log("name: "+name);
+    db.signup(name, email, password, major, age, sex, function (result) {
+        //console.log(JSON.stringify(result));
+
+        if (result.querysuccess) {
+           success = true;
+            body = result.queryresults;
+            res.json({
+                success: true,
+                insertresults: result.queryresults,
+                userid:result.queryresults.insertId
+            })
+
+        } else {
+            success = false;
+            body = result.queryresults;
+            if(result.msg){
+                res.json({
+                    success:false,
+                    msg:result.msg
+                })
+            }else{
+                res.json({
+                    success: false,
+                    insertresults: result.queryresults
+    
+                })
+            }
+          
+
+        }
+
+
+    })
+})
 app.listen(3000, function () {
     console.log('Listening on port 3000.');
 })
