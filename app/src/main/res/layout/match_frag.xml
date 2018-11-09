@@ -3,22 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/showpoststemp"
+
+
+
+    <Button
+        android:id="@+id/requestbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="succccessss"
-        android:visibility="gone"/>
-
-
+        android:text="make request"
+        android:layout_centerHorizontal="true"
+        />
 
 
         <ListView
             android:id="@+id/post_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="fill_parent" />
 
 
 

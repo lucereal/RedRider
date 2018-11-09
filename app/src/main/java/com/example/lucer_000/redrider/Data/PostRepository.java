@@ -5,12 +5,14 @@ package com.example.lucer_000.redrider.Data;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import com.example.lucer_000.redrider.Data.Post;
+
 
 public class PostRepository {
 
     private static PostRepository INSTANCE = null;
 
+
+    private Profile mProfile;
     private Map<String, Post> mCachedPosts;
 
 
@@ -26,6 +28,7 @@ public class PostRepository {
     }
 
     public void savePost(Post post) {
+        System.out.println("\n\npost: " + post.getDestination());
 
         // Do in memory cache update to keep the app UI up to date
         if (mCachedPosts == null) {
@@ -41,6 +44,17 @@ public class PostRepository {
             return new ArrayList(mCachedPosts.values());
         }
         return new ArrayList();
+    }
+
+    public Profile getProfile(){
+        if(mProfile != null){
+            return mProfile;
+        }
+        return new Profile();
+    }
+
+    public void setProfile(Profile profile){
+        mProfile = profile;
     }
 
 }

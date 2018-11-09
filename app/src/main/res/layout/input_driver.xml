@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <EditText
-    android:id="@+id/dest"
+    android:id="@+id/destdriver"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="@string/dest_hint"
@@ -15,7 +15,7 @@
     <!--//String dest, String date, String driverId, String seats, String time, String vehicle-->
 
     <EditText
-    android:id="@+id/date"
+    android:id="@+id/datedriver"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="@string/date_hint"
@@ -23,20 +23,26 @@
    />
 
     <EditText
-        android:id="@+id/seats"
+        android:id="@+id/seatsdriver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/compensation"
+        android:hint="Seats"
+        android:inputType="text"
+        />
+    <EditText
+        android:id="@+id/timedriver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Time"
         android:inputType="text"
         />
 
 
-
     <EditText
-        android:id="@+id/vehicle"
+        android:id="@+id/vehicledriver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/numSeats"
+        android:hint="Vehicle"
         android:inputType="text"
         />
 
