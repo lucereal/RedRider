@@ -55,7 +55,8 @@ public class MatchActivity extends AppCompatActivity {
 //        mMatchPresenter = new MatchPresenter(
 //                Injection.provideTasksRepository(getApplicationContext()), matchFragment);
 //
-            mMatchPresenter = new MatchPresenter(Injection.provideTasksRepository(getApplicationContext()),matchFragment);
+            mMatchPresenter = new MatchPresenter(Injection.provideTasksRepository(getApplicationContext()),
+                    matchFragment,getApplicationContext());
         //injection???
 
 

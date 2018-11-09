@@ -2,24 +2,34 @@ package com.example.lucer_000.redrider.MatchPage;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.content.Context;
+import com.example.lucer_000.redrider.Data.Driver;
 import com.example.lucer_000.redrider.Data.Injection;
 import com.example.lucer_000.redrider.Data.PostRepository;
 import com.example.lucer_000.redrider.Data.Post;
-
+import com.example.lucer_000.redrider.Data.Profile;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.lucer_000.redrider.util.ActivityUtils;
+import com.example.lucer_000.redrider.util.HttpUtils;
+import com.example.lucer_000.redrider.util.Volleycallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MatchPresenter implements MatchContract.Presenter {
 
     //initialize database class
 
+    Context context;
     private final MatchContract.View mMatchView;
 
     private PostRepository postRepository;
 
-    public MatchPresenter(PostRepository postRepository,@NonNull MatchContract.View matchView){
+    public MatchPresenter(PostRepository postRepository,@NonNull MatchContract.View matchView, Context context){
        // mMatchView = checkNotNull(matchView, "matchView cannot be null!");
+        this.context = context;
         mMatchView = matchView;
         this.postRepository = postRepository;
         mMatchView.setPresenter(this);
@@ -49,11 +59,10 @@ public class MatchPresenter implements MatchContract.Presenter {
     }
 
     public void loadPosts(){
+
         List<Post> postsToShow = new ArrayList<Post>();
 
         postsToShow = postRepository.getPosts();
-
-
 
         processPosts(postsToShow);
 
@@ -64,23 +73,54 @@ public class MatchPresenter implements MatchContract.Presenter {
         if(postList.isEmpty()){
             processNoPosts();
         }else{
-            Post[] postArray = postList.toArray(new Post[0]);
 
-            List<String> destArray = new ArrayList<String>();
-
-//            for(int i = 0; i<postList.size(); i++){
-//                destArray.add(postList.get(i).getDestination());
-//            }
-
-            String[] arr = {"hi", "there", "fame"};
-            //mMatchView.showPost(destArray.toArray(new String[destArray.size()]));
-            mMatchView.showPost(arr);
+            System.out.println("\n\npostlist size: " + postList.size());
+            mMatchView.showPost(postList);
         }
     }
 
     public void processNoPosts(){
 
     }
+
+    public void makeRequest(){
+
+
+        JSONObject jsonBody;
+        try{
+            jsonBody = new JSONObject();
+            jsonBody.put("email","cade.wall@ttu.edu");
+            jsonBody.put("password", "password");
+
+            HttpUtils.getInstance(context).makePost(jsonBody, new Volleycallback() {
+                @Override
+                public void onSuccess(JSONObject response) {
+                    System.out.println("made it");
+                    try{
+                        System.out.println("success: " + response.get("success"));
+                        JSONObject user = response.getJSONObject("user");
+                        Profile returnguy = new Profile();
+                        returnguy.setEmail(user.get("Email").toString());
+                        System.out.println(user.get("Password"));
+
+
+
+                    }catch(JSONException e){
+                        e.printStackTrace();
+                    }
+
+                    //return null;
+                }
+            });
+
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+
+
+
+
+    }//end makeRequest
 
 
 
