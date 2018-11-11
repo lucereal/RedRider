@@ -158,9 +158,9 @@ exports.riderpost = function(riderid,date,destination,time,callback){
       })
 }
 
-exports.getposts=function(userId,call){
+exports.getposts=function(userId,callback){
     connection.query("select * from riderpost where RiderID=?",[userId],function(error,resultrider){
-        connect.query("select * from driverpost where DriverID=?",[userID],function(error,resultdriver){
+        connection.query("select * from driverpost where DriverID=?",[userId],function(error,resultdriver){
             if (error) {
                 console.log("errors: " + error);
                 callback({
@@ -168,15 +168,12 @@ exports.getposts=function(userId,call){
                     queryresults: "insert failed"
                 })
             } 
-                if (results.length < 1) {
-                    callback({
-                        querysuccess: false,
-                        queryresults: results
-                    })
-                } else {
+                {
                     callback({
                         querysuccess: true,
-                        queryresults: resultrider + resultdriver
+                        queryresultdriver: resultdriver,
+                        queryresultrider: resultrider
+
                     });
                 }
 
