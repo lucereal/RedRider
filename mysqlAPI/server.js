@@ -112,7 +112,7 @@ app.post('/login', function (req, res) {
             body = result.queryresults[0];
             res.json({
                 success: true,
-                user: result.queryresults[0]
+                driver: result.queryresults
             })
 
         } else {
@@ -186,6 +186,77 @@ app.post('/signup', function (req, res) {
 
     })
 })
+
+app.post('/driverpost',function(req,res){
+    const params = req.body.params;
+    const driverid = params.driverid;
+    const vehicle = params.vehicle;
+    const seats=params.seats;
+    const destination=params.destination;
+    const time=params.time;
+    const date=params.date;
+    db.driverpost(driverid,vehicle,destination,time,date,seats,function (result) {
+        if (result.querysuccess) {
+           success = true;
+            body = result.queryresults;
+            res.json({
+                success: true,
+                postId:body.insertId,
+                insertresults: result.queryresults,
+            })
+        } else {
+            success = false;
+            body = result.queryresults;
+            }
+        })
+})
+
+app.post('/riderpost',function(req,res){
+    const params = req.body.params;
+   
+    const riderid=params.riderid;
+    const destination=params.destination;
+    const time=params.time;
+    const date=params.date;
+    db.riderpost(riderid,date,destination,time,function (result) {
+        if (result.querysuccess) {
+           success = true;
+            body = result.queryresults;
+            res.json({
+                success: true,
+                postId:body.insertId,
+                insertresults: result.queryresults,
+            })
+        } else {
+            success = false;
+            body = result.queryresults;
+            }
+        })
+})
+
+app.post('/getposts',function(req,res){
+const params=req.body.params;
+const userid=params.userId
+
+db.getposts(userid,function(result){
+    if (result.querysuccess) {
+        success = true;
+         body = result.queryresults;
+         res.json({
+             success: true,
+             postId:body.insertId,
+             insertresults: result.queryresults,
+         })
+     } else {
+         success = false;
+         body = result.queryresults;
+         }
+})
+
+})
+
+
+
 app.listen(3000, function () {
     console.log('Listening on port 3000.');
 })
