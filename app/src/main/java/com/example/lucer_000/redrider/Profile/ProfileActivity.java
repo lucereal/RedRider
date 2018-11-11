@@ -24,17 +24,25 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_act);
 
+        String email = getIntent().getStringExtra("Email");
+        String pass = getIntent().getStringExtra("Password");
+
+
 
         ProfileFragment profileFragment =  (ProfileFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
 
         if(profileFragment == null){
             profileFragment = ProfileFragment.newInstance();
+            Bundle bundle = new Bundle();
+            bundle.putString("Email", email);
+            bundle.putString("Password", pass);
+            profileFragment.setArguments(bundle);
             ActivityUtils.addFragmentToActivity(
                     getSupportFragmentManager(), profileFragment, R.id.contentFrame
             );
         }
 
-        mProfilePresenter = new ProfilePresenter(Injection.provideTasksRepository(getApplicationContext()),profileFragment);
+        mProfilePresenter = new ProfilePresenter(Injection.provideTasksRepository(getApplicationContext()),profileFragment, getApplicationContext());
 
     }
 

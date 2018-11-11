@@ -20,7 +20,7 @@ public class HttpUtils {
 
     public static HttpUtils myInstance;
     private static Context context;
-    private String URL ="http://10.161.151.200:3000/login";
+    private String URL ="http://10.161.151.200:3000/";
 
     public  RequestQueue queue;
 
@@ -82,7 +82,7 @@ public class HttpUtils {
 
     }
 
-    public void login(String email, String password){
+    /*public void login(String email, String password){
         JSONObject jsonBody;
         try{
             jsonBody = new JSONObject();
@@ -113,9 +113,9 @@ public class HttpUtils {
 
         }catch(JSONException e){
             e.printStackTrace();
-        }
+        }*/
 
-    }
+   // }
 
 
 

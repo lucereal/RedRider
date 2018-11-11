@@ -84,11 +84,6 @@ public class LoginFragment extends Fragment implements LoginContract.View {
             @Override
             public void onClick(View view) {
                 mPresenter.signIn(email.getText().toString(), password.getText().toString());
-
-                /*if(user != null){
-                    Intent intent = new Intent(root.getContext(), ProfileActivity.class);
-                    startActivity(intent);
-                }*/
             }
         });
 
@@ -103,17 +98,8 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     }
 
     public void signInSuccess(){
-        Intent intent = new Intent(root.getContext(), MatchActivity.class);
+        Intent intent = new Intent(root.getContext(), ProfileActivity.class);
         startActivity(intent);
     }
 
-   /* public void signIn(String email, String password){
-        if(email.equals("mayur.bhakta@ttu.edu") && password.equals("testing")){
-            Intent intent = new Intent(root.getContext(), MatchActivity.class);
-            startActivity(intent);
-        }
-        else{
-            System.out.println("Failed");
-        }
-    }*/
 }
