@@ -242,10 +242,12 @@ db.getposts(userid,function(result){
     if (result.querysuccess) {
         success = true;
          body = result.queryresults;
+        // console.log(result);
          res.json({
              success: true,
-             postId:body.insertId,
-             insertresults: result.queryresults,
+             //postId:body.insertId,
+             riderposts:result.queryresultrider,
+             driverpost: result.queryresultdriver
          })
      } else {
          success = false;
