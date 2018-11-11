@@ -112,7 +112,7 @@ app.post('/login', function (req, res) {
             body = result.queryresults[0];
             res.json({
                 success: true,
-                driver: result.queryresults
+                user: result.queryresults[0]
             })
 
         } else {
