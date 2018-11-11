@@ -20,7 +20,9 @@ public class HttpUtils {
 
     public static HttpUtils myInstance;
     private static Context context;
+
     private String URL ="http://10.161.151.200:3000/";
+
 
     public  RequestQueue queue;
 
@@ -53,10 +55,11 @@ public class HttpUtils {
 //    }
 
 
-    public void makePost(JSONObject jsonBody, final Volleycallback callback){
+    public void makePost(JSONObject jsonBody, String route, final Volleycallback callback){
 
         System.out.println("1");
-        JsonObjectRequest jsonObject = new JsonObjectRequest(Request.Method.POST, URL, jsonBody, new Response.Listener<JSONObject>() {
+        String routeUrl = URL+route;
+        JsonObjectRequest jsonObject = new JsonObjectRequest(Request.Method.POST, routeUrl, jsonBody, new Response.Listener<JSONObject>() {
 
             @Override
         public void onResponse(JSONObject response) {
@@ -116,6 +119,7 @@ public class HttpUtils {
         }*/
 
    // }
+
 
 
 
