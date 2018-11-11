@@ -20,7 +20,7 @@ public class HttpUtils {
 
     public static HttpUtils myInstance;
     private static Context context;
-    private String URL ="http://10.201.14.137:3000/";
+    private String URL ="http://192.168.1.10:3001/";
 
     public  RequestQueue queue;
 
