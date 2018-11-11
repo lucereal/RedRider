@@ -27,14 +27,22 @@ public class PostRepository {
         INSTANCE = null;
     }
 
-    public void savePost(Post post) {
+    public void savePost(String postId,Post post) {
         System.out.println("\n\npost: " + post.getDestination());
 
         // Do in memory cache update to keep the app UI up to date
         if (mCachedPosts == null) {
             mCachedPosts = new LinkedHashMap<>();
         }
-        mCachedPosts.put(post.toString(), post);
+
+        if(post instanceof Driver){
+            String key = "driver+"+postId;
+            mCachedPosts.put(key,post);
+        }else{
+            String key = "rider+"+postId;
+            mCachedPosts.put(key, post);
+        }
+
     }
 
     public ArrayList getPosts(){
@@ -54,11 +62,7 @@ public class PostRepository {
     }
 
     public void setProfile(Profile profile){
-<<<<<<< HEAD
-=======
 
-
->>>>>>> master
         if(mProfile == null){
             mProfile = new Profile();
         }

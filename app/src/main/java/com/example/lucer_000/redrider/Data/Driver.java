@@ -22,7 +22,7 @@ public class Driver extends Post{
 	}
 
 
-
+	
 	public int getDriverId() {
 		return driverId;
 	}

@@ -35,7 +35,8 @@ public class PostActivity extends AppCompatActivity {
                     getSupportFragmentManager(), postFragment, R.id.contentFrame);
 
         }
-        mPostPresenter = new PostPresenter(Injection.provideTasksRepository(getApplicationContext()),postFragment);
+        mPostPresenter = new PostPresenter(Injection.provideTasksRepository(getApplicationContext()),
+                postFragment, getApplicationContext());
 
         Button backbutton = findViewById(R.id.backbutton);
         backbutton.setOnClickListener(new View.OnClickListener() {

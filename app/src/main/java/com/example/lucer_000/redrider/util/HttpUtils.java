@@ -20,7 +20,7 @@ public class HttpUtils {
 
     public static HttpUtils myInstance;
     private static Context context;
-    private String URL ="http://10.161.151.200:3000/login";
+    private String URL ="http://10.161.151.200:3000/";
 
     public  RequestQueue queue;
 
@@ -53,10 +53,11 @@ public class HttpUtils {
 //    }
 
 
-    public void makePost(JSONObject jsonBody, final Volleycallback callback){
+    public void makePost(JSONObject jsonBody, String route, final Volleycallback callback){
 
         System.out.println("1");
-        JsonObjectRequest jsonObject = new JsonObjectRequest(Request.Method.POST, URL, jsonBody, new Response.Listener<JSONObject>() {
+        String routeUrl = URL+route;
+        JsonObjectRequest jsonObject = new JsonObjectRequest(Request.Method.POST, routeUrl, jsonBody, new Response.Listener<JSONObject>() {
 
             @Override
         public void onResponse(JSONObject response) {
@@ -82,40 +83,7 @@ public class HttpUtils {
 
     }
 
-    public void login(String email, String password){
-        JSONObject jsonBody;
-        try{
-            jsonBody = new JSONObject();
-            jsonBody.put("email","cade.wall@ttu.edu");
-            jsonBody.put("password", "password");
 
-            HttpUtils.getInstance(context).makePost(jsonBody, new Volleycallback() {
-                @Override
-                public void onSuccess(JSONObject response) {
-                    System.out.println("made it");
-                    try{
-                        System.out.println("success: " + response.get("success"));
-                        JSONObject user = response.getJSONObject("user");
-                        Profile returnguy = new Profile();
-                        returnguy.setEmail(user.get("Email").toString());
-                        //returnguy.setAge(user.get("Age").toString());
-                        System.out.println(user.get("Password"));
-
-
-
-                    }catch(JSONException e){
-                        e.printStackTrace();
-                    }
-
-                    //return null;
-                }
-            });
-
-        }catch(JSONException e){
-            e.printStackTrace();
-        }
-
-    }
 
 
 
