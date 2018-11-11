@@ -52,6 +52,7 @@ public class LoginPresenter implements LoginContract.Presenter{
                             guy.setName(user.get("Name").toString());
                             guy.setAge((Integer) user.get("Age"));
                             guy.setMajor(user.get("Major").toString());
+                            guy.setSex(user.get("Sex").toString());
                         System.out.println(user.get("Password"));
                         mPostRepository.setProfile(guy);
                         mLoginView.signInSuccess();
@@ -70,4 +71,6 @@ public class LoginPresenter implements LoginContract.Presenter{
             e.printStackTrace();
         }
     }
+
+
 }

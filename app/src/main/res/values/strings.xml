@@ -16,8 +16,8 @@
     <string name="numSeats">Seats Available</string>
     <string name="sex_prompt">Select a sex</string>
     <string-array name="sex_array">
-        <item>Male</item>
-        <item>Female</item>
+        <item>male</item>
+        <item>female</item>
     </string-array>
 
 </resources>

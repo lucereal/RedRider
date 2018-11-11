@@ -22,6 +22,8 @@ public class HttpUtils {
     private static Context context;
     private String URL ="http://192.168.1.10:3001/";
 
+
+
     public  RequestQueue queue;
 
 
@@ -83,6 +85,40 @@ public class HttpUtils {
 
     }
 
+    /*public void login(String email, String password){
+        JSONObject jsonBody;
+        try{
+            jsonBody = new JSONObject();
+            jsonBody.put("email","cade.wall@ttu.edu");
+            jsonBody.put("password", "password");
+
+            HttpUtils.getInstance(context).makePost(jsonBody, new Volleycallback() {
+                @Override
+                public void onSuccess(JSONObject response) {
+                    System.out.println("made it");
+                    try{
+                        System.out.println("success: " + response.get("success"));
+                        JSONObject user = response.getJSONObject("user");
+                        Profile returnguy = new Profile();
+                        returnguy.setEmail(user.get("Email").toString());
+                        //returnguy.setAge(user.get("Age").toString());
+                        System.out.println(user.get("Password"));
+
+
+
+                    }catch(JSONException e){
+                        e.printStackTrace();
+                    }
+
+                    //return null;
+                }
+            });
+
+        }catch(JSONException e){
+            e.printStackTrace();
+        }*/
+
+   // }
 
 
 
