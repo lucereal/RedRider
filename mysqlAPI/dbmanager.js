@@ -60,7 +60,8 @@ exports.login = function (email, password, callback) {
 
 }
 
-exports.signup = function (name, email, password, major, age, sex, callback) {
+exports.signup = function (email, password, callback) {
+    //if user already exists
     this.login(email, password, function (result) {
         if (result.querysuccess == true) {
             callback({
@@ -69,27 +70,29 @@ exports.signup = function (name, email, password, major, age, sex, callback) {
             })
         }
         else {
-            connection.query('insert into profile(Name, Major, Age, Sex, Email, Password) VALUES (?, ?, ?, ?, ?, ?)', [name, major, age, sex, email, password], function (error, results) {
-                if (error) {
+            connection.query('insert into profile(Email, Password) VALUES (?, ?)', [email, password], function (error, results) {
+                if (error) {//if insert error
                     console.log("errors: " + error);
                     callback({
                         querysuccess: false,
                         queryresults: "insert failed"
                     })
-                } //else {
-                    console.log("results: " + JSON.stringify(results));
-                    if (results.length < 1) {
-                        callback({
-                            querysuccess: false,
-                            queryresults: results
-                        })
-                    } else {
+                } else {
+                    
+                    // if (results.length < 1) {//if results is empty
+                    //     callback({
+                    //         querysuccess: false,
+                    //         queryresults: results
+                    //     })
+                    // } else {
+                        
+                       
                         callback({
                             querysuccess: true,
                             queryresults: results
                         });
-                    }
-                //}
+                    //}
+                }
 
 
 
@@ -98,8 +101,25 @@ exports.signup = function (name, email, password, major, age, sex, callback) {
         }
     })
 
+}
 
 
+exports.updateProfile = function(profileId,name, major, age, sex, callback){
+
+    connection.query("update profile set Name=?, Major=?,Age=?,Sex=? where idProfile=?",[name,major,age,sex,profileId],function (error, results){
+        if (error) {//if insert error
+            console.log("errors: " + error);
+            callback({
+                querysuccess: false,
+                queryresults: "insert failed"
+            })
+        } else {
+            callback({
+                querysuccess:true,
+                queryresults:results
+            })
+        }
+    })
 }
 
 
