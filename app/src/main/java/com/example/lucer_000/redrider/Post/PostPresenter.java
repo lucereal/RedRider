@@ -54,10 +54,10 @@ public class PostPresenter implements PostContract.Presenter {
         JSONObject jsonBody;
         try{
             jsonBody = new JSONObject();
-            jsonBody.put("Destination",dest);
-            jsonBody.put("Date", date);
-            jsonBody.put("Time", time);
-            jsonBody.put("ProfileId", profileId);
+            jsonBody.put("destination",dest);
+            jsonBody.put("date", date);
+            jsonBody.put("time", time);
+            jsonBody.put("riderid", profileId);
 
             HttpUtils.getInstance(context).makePost(jsonBody,"riderpost", new Volleycallback() {
                 @Override
@@ -109,12 +109,12 @@ public class PostPresenter implements PostContract.Presenter {
         JSONObject jsonBody;
         try{
             jsonBody = new JSONObject();
-            jsonBody.put("Destination",dest);
-            jsonBody.put("Date", date);
-            jsonBody.put("Seats", seats);
-            jsonBody.put("Time", time);
-            jsonBody.put("Vehicle", vehicle);
-            jsonBody.put("ProfileId", profileId);
+            jsonBody.put("destination",dest);
+            jsonBody.put("date", date);
+            jsonBody.put("seats", seats);
+            jsonBody.put("time", time);
+            jsonBody.put("vehicle", vehicle);
+            jsonBody.put("driverid", profileId);
 
             HttpUtils.getInstance(context).makePost(jsonBody,"driverpost", new Volleycallback() {
                 @Override
