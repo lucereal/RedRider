@@ -71,7 +71,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View{
                     rePass.requestFocus();
                 }
                 else {
-                    profilePage(email.getText().toString(), pass.getText().toString());
+                    mPresenter.signUp(email.getText().toString(), pass.getText().toString());
                 }
             }
         });
@@ -93,12 +93,12 @@ public class RegisterFragment extends Fragment implements RegisterContract.View{
         startActivity(intent);
     }
 
-    public void profilePage(String email, String pass){
+   /* public void profilePage(String email, String pass){
         Intent intent = new Intent(root.getContext(), ProfileActivity.class);
         intent.putExtra("Email", email);
         intent.putExtra("Password", pass);
         startActivity(intent);
-    }
+    }*/
 
     public boolean validatePassword(String pass, String rePass){
         if(pass.equals(rePass)){

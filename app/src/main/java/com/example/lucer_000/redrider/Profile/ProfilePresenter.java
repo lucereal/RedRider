@@ -11,6 +11,8 @@ import com.example.lucer_000.redrider.util.Volleycallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
+
 public class ProfilePresenter implements ProfileContract.Presenter{
 
     Context context;
@@ -31,39 +33,42 @@ public class ProfilePresenter implements ProfileContract.Presenter{
     }
     public Profile getUserProfile(){
         Profile test = postRepository.getProfile();
+        System.out.println("name in presenter: " + test.getName());
+        System.out.println(test.getMajor());
         return test;
     }
 
-    public void signUp(String email, String pass, String major, String sex, Integer age, String name){
+    public void updateProfile(String name, String major, String sex, Integer age){
         JSONObject jsonBody;
+        Profile test = postRepository.getProfile();
         try{
             jsonBody = new JSONObject();
-            jsonBody.put("email",email);
-            jsonBody.put("password", pass);
+            jsonBody.put("profileId", test.getIdProfile());
             jsonBody.put("major", major);
             jsonBody.put("sex", sex);
             jsonBody.put("age", age);
             jsonBody.put("name", name);
 
-            HttpUtils.getInstance(context).makePost(jsonBody,"signup", new Volleycallback() {
+
+            HttpUtils.getInstance(context).makePost(jsonBody, "updateprofile", new Volleycallback() {
+
                 @Override
                 public void onSuccess(JSONObject response) {
                     System.out.println("made it");
                     try{
-                        Profile guy = new Profile();
 
-                        //guy.getSex();
-                        System.out.println("success: " + response.get("success"));
-                        JSONObject user = response.getJSONObject("user");
-                        guy.setName(user.get("Name").toString());
-                        guy.setAge((Integer) user.get("Age"));
-                        guy.setMajor(user.get("Major").toString());
-                        guy.setSex(user.get("Sex").toString());
-                        postRepository.setProfile(guy);
-                        mProfileView.signUpSuccess();
+                         if(response.get("success").toString().equals("true")) {
+
+                             test.setName(name);
+                             test.setSex(sex);
+                             test.setMajor(major);
+                             test.setAge(age);
 
 
-
+                             mProfileView.updateSuccess();
+                         }else{
+                             System.out.println("Profile not updated");
+                         }
                     }catch(JSONException e){
                         e.printStackTrace();
                     }

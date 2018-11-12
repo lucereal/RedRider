@@ -63,10 +63,13 @@ public class PostRepository {
 
     public void setProfile(Profile profile){
 
+        System.out.println("profile in repo: " + profile.getMajor());
         if(mProfile == null){
             mProfile = new Profile();
         }
-        mProfile = profile;
+            mProfile = profile;
+
+
     }
 
 }

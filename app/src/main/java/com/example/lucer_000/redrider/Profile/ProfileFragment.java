@@ -59,14 +59,14 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.profile_frag, container, false);
-
+        Profile test = mPresenter.getUserProfile();
         String email = getArguments().getString("Email");
         String pass = getArguments().getString("Password");
 
         //linear = inflater.inflate(R.layout.profile_frag, container, false);
-        String hi = "Mayur Bhakta";
-        personName = (TextView) root.findViewById(R.id.personName);
-        personName.setText(hi);
+
+        personName = root.findViewById(R.id.personName);
+        personName.setText(test.getName());
 
         nameField = root.findViewById(R.id.nameField);
         majorField = root.findViewById(R.id.majorField);
@@ -82,8 +82,8 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
         edit = root.findViewById(R.id.editBtn);
         save = root.findViewById(R.id.saveBtn);
 
-        Profile test = mPresenter.getUserProfile();
 
+        System.out.println("name in fragment: " + test.getName());
         name.setText(test.getName());
         major.setText(test.getMajor());
         age.setText(String.valueOf(test.getAge()));
@@ -115,12 +115,13 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.signUp(email, pass, major.getText().toString(), "male", Integer.parseInt(age.getText().toString()), name.getText().toString() );
+                mPresenter.updateProfile( nameField.getText().toString(), majorField.getText().toString(), "male", Integer.parseInt(ageField.getText().toString()));
             }
         });
 
         return root;
-    }
+    }//end createView
+
     public void setSpinText(Spinner spin, String text)
     {
         for(int i= 0; i < spin.getAdapter().getCount(); i++)
@@ -133,7 +134,7 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
 
     }
 
-    public void signUpSuccess(){
+    public void updateSuccess(){
         Intent intent = new Intent(root.getContext(), ProfileActivity.class);
         startActivity(intent);
     }
