@@ -7,10 +7,10 @@ import com.example.lucer_000.redrider.Data.Profile;
 public interface ProfileContract {
 
     interface View extends BaseView<Presenter> {
-        void signUpSuccess();
+        void updateSuccess();
     }
     interface Presenter extends BasePresenter {
         Profile getUserProfile();
-        void signUp(String email, String pass, String major, String sex, Integer age, String name);
+        void updateProfile(String name, String major, String sex, Integer age);
     }
 }
