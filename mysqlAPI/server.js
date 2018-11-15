@@ -79,7 +79,6 @@ app.post('/signup', function (req, res) {
                 success: true,
                 insertresults: result.queryresults,
                 profileId: result.queryresults.insertId
-
             })
 
         } else {
@@ -180,6 +179,28 @@ app.post('/riderpost', function (req, res) {
     })
 })
 
+app.post('/getmatches',function (req,res){
+    const userid = req.body.userId
+
+    db.getmatches(userid,function(result){
+        if (result.querysuccess) {
+            success = true
+            body = result.queryresults
+            res.json({
+                success: true,
+                matchArray: result.matchArray,
+            })
+        }else{
+            success = false,
+            body = results.queryresults
+        }
+
+    //    riderprofile: result1,
+    //    driverprofile: result2,
+    //    matchpost: result
+    })
+})
+
 app.post('/getposts', function (req, res) {
 
     const userid = req.body.userId
@@ -205,7 +226,7 @@ app.post('/getposts', function (req, res) {
 
 
 
-app.listen(3001, function () {
+app.listen(3000, function () {
     console.log('Listening on port 3000.');
 })
 
