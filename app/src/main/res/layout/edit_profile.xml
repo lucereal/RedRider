@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="NAME"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
+
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MAJOR"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/majorField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorWhite"
+        android:inputType="text"/>
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+
+        android:text="AGE"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/ageField"
+        android:layout_width="186dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorWhite"
+        android:inputType="text"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:text="SEX"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold"
+         />
+
+
+    <Spinner
+        android:layout_width="147dp"
+        android:layout_height="35dp"
+        android:entries="@array/sex_array"
+        android:textAlignment="center"
+       >
+
+    </Spinner>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:text="INTERESTS"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold"
+         />
+
+    <EditText
+        android:id="@+id/interestField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorWhite"
+        android:ems="10"
+        android:inputType="textMultiLine"/>
+
+    <Button
+        android:id="@+id/editBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EDIT"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAVE CHANGES"
+        android:visibility="visible"/>
+
+</LinearLayout>

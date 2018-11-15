@@ -7,15 +7,20 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.method.KeyListener;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 import android.widget.VideoView;
 
 import com.example.lucer_000.redrider.Data.Profile;
@@ -25,6 +30,7 @@ import org.w3c.dom.Text;
 
 import java.io.Console;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class ProfileFragment extends Fragment implements ProfileContract.View {
 
@@ -34,7 +40,8 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
     private TextView personName, name, major, age, interest;
     private EditText nameField, majorField, ageField, interestField;
     private Button edit, save;
-
+    private Toolbar toolbar;
+    private ImageView backBtn;
 
     @Override
     public void setPresenter(@NonNull ProfileContract.Presenter presenter) {
@@ -60,8 +67,11 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.profile_frag, container, false);
         Profile test = mPresenter.getUserProfile();
-        String email = getArguments().getString("Email");
-        String pass = getArguments().getString("Password");
+
+        toolbar = root.findViewById(R.id.appbar);
+        ((AppCompatActivity)Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
+        getActivity().setTitle("Red Rider");
+
 
         //linear = inflater.inflate(R.layout.profile_frag, container, false);
 

@@ -7,31 +7,34 @@
     android:orientation="vertical">
 
 
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <include layout="@layout/appbar"
+                android:id="@+id/appbar"></include>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="center_horizontal"
-                >
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/rider"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/rider"/>
+                    android:text="@string/rider" />
+
                 <Button
                     android:id="@+id/driver"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/driver"/>
+                    android:text="@string/driver" />
 
             </LinearLayout>
 
