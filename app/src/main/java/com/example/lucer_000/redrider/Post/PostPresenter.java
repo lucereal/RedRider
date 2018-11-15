@@ -46,6 +46,7 @@ public class PostPresenter implements PostContract.Presenter {
 
         int profileId = userProfile.getIdProfile();
 
+
         Rider riderPost = new Rider(dest,date, profileId, time);
 
         System.out.println("inside rider submit rider post");

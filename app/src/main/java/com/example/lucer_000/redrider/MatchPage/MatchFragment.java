@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import com.example.lucer_000.redrider.Data.Driver;
 import com.example.lucer_000.redrider.Data.Post;
+import com.example.lucer_000.redrider.Data.Profile;
 import com.example.lucer_000.redrider.Data.Rider;
 import com.example.lucer_000.redrider.Post.PostActivity;
 import com.example.lucer_000.redrider.R;
@@ -171,6 +172,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
+            System.out.print("hiiiiii");
             View listItem = convertView;
 
             // Get the data item for this position
@@ -192,10 +194,14 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                 System.out.println("\n\ncurrentPost.getDestination(): " + currentPost.getDestination());
 
                 dest.setText(currentPost.getDestination());
+
                 date.setText(currentPost.getDate());
+
                 time.setText(((Driver) currentPost).getTime());
+
                 vehicle.setText(((Driver) currentPost).getVehicle());
                 int seatInt = ((Driver) currentPost).getSeats();
+
                 seats.setText(Integer.toString(seatInt));
 
 

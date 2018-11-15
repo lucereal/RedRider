@@ -41,6 +41,7 @@ exports.login = function (email, password, callback) {
                 })
             }
         }).catch(error => {
+            console.log(error.stack);
             resolve({
                 querysuccess: false,
                 queryresults: result
@@ -55,14 +56,19 @@ exports.login = function (email, password, callback) {
 
 exports.signup = function (email, password, callback) {
     //if user already exists
-    this.login(email, password, function (result) {
+    console.log('here');
+    this.login(email,password).then(result =>{
         if (result.querysuccess == true) {
             callback({
                 querysuccess: false,
                 msg: "user exisits"
             })
         }
+    
+        
+
         else {
+            console.log(1);
             connection.query('insert into profile(Email, Password) VALUES (?, ?)', [email, password], function (error, results) {
                 if (error) {//if insert error
                     console.log("errors: " + error);
@@ -79,7 +85,7 @@ exports.signup = function (email, password, callback) {
                     //     })
                     // } else {
 
-
+                    console.log("results: " + results);
                     callback({
                         querysuccess: true,
                         queryresults: results
@@ -98,11 +104,6 @@ exports.signup = function (email, password, callback) {
 
 exports.updateProfile = function (profileId, name, major, age, sex, callback) {
 
-<<<<<<< HEAD
-exports.updateProfile = function (profileId, name, major, age, sex, callback) {
-
-=======
->>>>>>> d823fc849bb2d0bdff956382ee5c9582ed467943
     connection.query("update profile set Name=?, Major=?,Age=?,Sex=? where idProfile=?", [name, major, age, sex, profileId], function (error, results) {
         if (error) {//if insert error
             console.log("errors: " + error);
@@ -123,14 +124,6 @@ exports.driverpost = function (driverid, vehicle, destination, time, date, seats
     if (time == null)
         time = 0;
 
-<<<<<<< HEAD
-
-exports.driverpost = function (driverid, vehicle, destination, time, date, seats, callback) {
-    if (time == null)
-        time = 0;
-
-=======
->>>>>>> d823fc849bb2d0bdff956382ee5c9582ed467943
     connection.query("insert into driverpost(DriverID, Vehicle, DestinationID, Time, Date, Seats) values(?,?,?,?,?,?)", [driverid, vehicle, destination, time, date, seats], function (error, results) {
         if (error) {
             console.log("errors: " + error);
@@ -138,12 +131,8 @@ exports.driverpost = function (driverid, vehicle, destination, time, date, seats
                 querysuccess: false,
                 queryresults: "insert failed"
             })
-<<<<<<< HEAD
-        } //else {
-=======
         }
         //else {
->>>>>>> d823fc849bb2d0bdff956382ee5c9582ed467943
         //console.log("results: " + JSON.stringify(results));
         if (results.length < 1) {
             callback({
@@ -184,13 +173,6 @@ exports.riderpost = function (riderid, date, destination, time, callback) {
             });
         }
     })
-<<<<<<< HEAD
-}
-
-exports.getposts = function (userId, callback) {
-    connection.query("select * from riderpost where RiderID=?", [userId], function (error, resultrider) {
-        connection.query("select * from driverpost where DriverID=?", [userId], function (error, resultdriver) {
-=======
 }
 
 exports.getposts = function (userId, callback) {
@@ -244,7 +226,6 @@ exports.getmatches = function (userId, callback) {
             driverid = result[i].DriverID;
             console.log(result[i].RiderID);
         connection.query("select * from profile where idProfile = ?", [riderid], function (error1, result1) {
->>>>>>> d823fc849bb2d0bdff956382ee5c9582ed467943
             if (error) {
                 console.log("Errors: " + error1)
                 callback({
@@ -252,17 +233,6 @@ exports.getmatches = function (userId, callback) {
                     queryresults: "get rider from profile failed"
                 })
             }
-<<<<<<< HEAD
-            {
-                callback({
-                    querysuccess: true,
-
-                    queryresultdriver: resultdriver,
-                    queryresultrider: resultrider
-
-                });
-            }
-=======
            
             console.log("result1: " + JSON.stringify(result1));
             connection.query("select * from profile where idProfile=?", [driverid], function (error2, result2) {
@@ -281,7 +251,6 @@ exports.getmatches = function (userId, callback) {
                     riderprofile:result1,
                     driverprofile:result2,
                 })
->>>>>>> d823fc849bb2d0bdff956382ee5c9582ed467943
 
                 console.log("result.length: " + result.length);
                 if(index >= result.length-1){

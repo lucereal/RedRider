@@ -60,10 +60,11 @@ public class PostRepository {
 
     public void getPosts(Context context, final GetPostCallback callback){
 
+        mProfile.getIdProfile();
         JSONObject jsonBody;
         try{
             jsonBody = new JSONObject();
-            jsonBody.put(  "userId","1234");
+            jsonBody.put(  "userId","1");
 
             HttpUtils.getInstance(context).makePost(jsonBody,"getposts", new Volleycallback() {
                 @Override
@@ -81,8 +82,9 @@ public class PostRepository {
                             System.out.println("riderArray: " + riderArray.length());
                             System.out.println("driverArray: " + driverArray.length());
 
-                            Rider temprider = new Rider();
+
                             for(int i = 0; i<riderArray.length(); i++){
+                                Rider temprider = new Rider();
                                 JSONObject jsonObj = new JSONObject();
                                 jsonObj = riderArray.getJSONObject(i);
 
@@ -93,8 +95,9 @@ public class PostRepository {
                                 String postId = jsonObj.get("postID").toString();
                                 savePost(postId,temprider);
                             }
-                            Driver tempdriver = new Driver();
+
                             for(int i = 0; i<driverArray.length(); i++){
+                                Driver tempdriver = new Driver();
                                 JSONObject jsonObj = new JSONObject();
                                 jsonObj = driverArray.getJSONObject(i);
 
