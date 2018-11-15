@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.lucer_000.redrider.util.ActivityUtils;
+import com.example.lucer_000.redrider.util.GetPostCallback;
 import com.example.lucer_000.redrider.util.HttpUtils;
 import com.example.lucer_000.redrider.util.Volleycallback;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,11 +62,19 @@ public class MatchPresenter implements MatchContract.Presenter {
 
     public void loadPosts(){
 
-        List<Post> postsToShow = new ArrayList<Post>();
 
-        postsToShow = postRepository.getPosts();
 
-        processPosts(postsToShow);
+
+        postRepository.getPosts(context, new GetPostCallback() {
+            @Override
+            public void onSuccess(ArrayList list) {
+                List<Post> postsToShow = new ArrayList<Post>();
+                postsToShow = list;
+                processPosts(postsToShow);
+            }
+        });
+
+
 
 
     }

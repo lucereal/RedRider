@@ -24,9 +24,7 @@ app.post('/login', function (req, res) {
     console.log("email: " + email);
     console.log("password: " + password);
 
-    db.login(email, password, function (result) {
-        //console.log(JSON.stringify(result));
-
+    db.login(email,password).then(result=>{
         if (result.querysuccess) {
             success = true;
             body = result.queryresults[0];
@@ -44,10 +42,15 @@ app.post('/login', function (req, res) {
             })
 
         }
-
-
-
     })
+    // db.login(email, password, function (result) {
+    //     //console.log(JSON.stringify(result));
+
+        
+
+
+
+    // })
   
 
 
@@ -190,7 +193,7 @@ app.post('/getposts', function (req, res) {
                 success: true,
                 //postId:body.insertId,
                 riderposts: result.queryresultrider,
-                driverpost: result.queryresultdriver
+                driverposts: result.queryresultdriver
             })
         } else {
             success = false;
