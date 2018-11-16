@@ -204,6 +204,7 @@ exports.getmatches = function (userId, callback) {
         driverprofile:{}
     }
     
+    let matchArray = [];
     let index = 0;
     connection.query("select * from matching where DriverID=? or RiderID=?", [userId, userId], function (error, result) {
         if (error) {
@@ -248,8 +249,8 @@ exports.getmatches = function (userId, callback) {
                 console.log("result2: " + JSON.stringify(result2));
                 matchArray.push({
                     matchpost:result[i],
-                    riderprofile:result1,
-                    driverprofile:result2,
+                    riderprofile:result1[0],
+                    driverprofile:result2[0],
                 })
 
                 console.log("result.length: " + result.length);

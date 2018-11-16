@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lucer_000.redrider.Data.Driver;
+import com.example.lucer_000.redrider.Data.MatchPost;
 import com.example.lucer_000.redrider.Data.Post;
 import com.example.lucer_000.redrider.Data.Profile;
 import com.example.lucer_000.redrider.Data.Rider;
@@ -229,6 +230,25 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                 dest.setText(currentPost.getDestination());
                 date.setText(currentPost.getDate());
                 time.setText(((Rider) currentPost).getTime());
+            }else if(currentPost instanceof MatchPost){
+                if (listItem == null) {
+                    listItem = LayoutInflater.from(context).inflate(R.layout.matchpost, parent, false);
+                }
+
+                System.out.println("IS RIDER");
+
+                TextView dest = (TextView) listItem.findViewById(R.id.postDestMatch);
+                TextView date= (TextView) listItem.findViewById(R.id.postDateMatch);
+                TextView name= (TextView) listItem.findViewById(R.id.postNameMatch);
+                TextView major= (TextView) listItem.findViewById(R.id.postMajorMatch);
+                dest.setText(currentPost.getDestination());
+                date.setText(currentPost.getDate());
+
+                name.setText(((MatchPost) currentPost).getProfile().getName());
+                major.setText(((MatchPost) currentPost).getProfile().getMajor());
+
+
+
             }
 
             // Return the completed view to render on screen

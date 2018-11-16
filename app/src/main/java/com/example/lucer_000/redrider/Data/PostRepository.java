@@ -49,9 +49,12 @@ public class PostRepository {
         if(post instanceof Driver){
             String key = "driver+"+postId;
             mCachedPosts.put(key,post);
-        }else{
+        }else if(post instanceof Rider){
             String key = "rider+"+postId;
             mCachedPosts.put(key, post);
+        }else{
+            String key = "match+"+postId;
+            mCachedPosts.put(key,post);
         }
 
 
@@ -60,11 +63,11 @@ public class PostRepository {
 
     public void getPosts(Context context, final GetPostCallback callback){
 
-        mProfile.getIdProfile();
+        int profileID = mProfile.getIdProfile();
         JSONObject jsonBody;
         try{
             jsonBody = new JSONObject();
-            jsonBody.put(  "userId","1");
+            jsonBody.put(  "userId",profileID);
 
             HttpUtils.getInstance(context).makePost(jsonBody,"getposts", new Volleycallback() {
                 @Override
@@ -111,18 +114,91 @@ public class PostRepository {
                                 savePost(postId,tempdriver);
                             }
 
-                            ArrayList<Post> postList = new ArrayList<>();
 
-                            if (mCachedPosts != null ) {
+                            JSONObject jsonBodyB;
+                            try{
+                                jsonBodyB = new JSONObject();
+                                jsonBodyB.put(  "userId", profileID);
 
-                                postList = new ArrayList(mCachedPosts.values());
-                            }else{
+                                HttpUtils.getInstance(context).makePost(jsonBody,"getmatches", new Volleycallback() {
+                                    @Override
+                                    public void onSuccess(JSONObject response) {
 
-                                postList = new ArrayList();
+                                        try{
+                                            System.out.println("request success: " + response.get("success"));
+                                            if(response.get("success").toString().equals("true")){
+
+
+                                                JSONArray matchArray = response.getJSONArray("matchArray");
+
+
+                                                for(int i = 0; i<matchArray.length(); i++){
+                                                    MatchPost tempMatchPost = new MatchPost();
+                                                    JSONObject jsonObjParent = new JSONObject();
+                                                    jsonObjParent = matchArray.getJSONObject(i);
+                                                    JSONObject match = new JSONObject();
+                                                    JSONObject rider = new JSONObject();
+                                                    JSONObject driver = new JSONObject();
+
+                                                    match = jsonObjParent.getJSONObject("matchpost");
+                                                    rider = jsonObjParent.getJSONObject("riderprofile");
+                                                    driver = jsonObjParent.getJSONObject("driverprofile");
+                                                    Profile profile = new Profile();
+                                                    if(rider.getInt("idProfile") == (profileID)){
+
+                                                        profile.setName(driver.get("Name").toString());
+                                                        profile.setMajor(driver.get("Major").toString());
+                                                        profile.setIdProfile(driver.getInt("idProfile"));
+                                                        profile.setAge(driver.getInt("Age"));
+                                                    }else{
+                                                        profile.setName(rider.get("Name").toString());
+                                                        profile.setMajor(rider.get("Major").toString());
+                                                        profile.setIdProfile(rider.getInt("idProfile"));
+                                                        profile.setAge(rider.getInt("Age"));
+                                                    }
+
+                                                    tempMatchPost.setProfile(profile);
+                                                    tempMatchPost.setDate(match.get("Date").toString());
+                                                    tempMatchPost.setDestination(match.get("DestinationID").toString());
+                                                    String postId = match.get("TripID").toString();
+                                                    tempMatchPost.setTripID(Integer.parseInt(postId));
+
+                                                    savePost(postId,tempMatchPost);
+                                                }
+
+
+
+                                                ArrayList<Post> postList = new ArrayList<>();
+
+                                                if (mCachedPosts != null ) {
+
+                                                    postList = new ArrayList(mCachedPosts.values());
+                                                }else{
+
+                                                    postList = new ArrayList();
+                                                }
+
+
+                                                callback.onSuccess(postList);
+
+                                            }else{
+                                                System.out.println("driver post not success");
+                                            }
+
+
+
+                                        }catch(JSONException e){
+                                            e.printStackTrace();
+                                        }
+
+                                        //return null;
+                                    }
+                                });
+
+                            }catch(JSONException e){
+                                e.printStackTrace();
                             }
 
-
-                            callback.onSuccess(postList);
 
 
 
