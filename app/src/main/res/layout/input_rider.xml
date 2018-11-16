@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/dest_hint"
         android:inputType="text"
+        android:textColor="@color/colorWhite"
+        android:textSize="18dp"
         />
 
 
@@ -19,6 +21,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/date_hint"
         android:inputType="text"
+        android:textColor="@color/colorWhite"
+        android:textSize="18dp"
         />
 
     <EditText
@@ -27,6 +31,8 @@
         android:layout_height="wrap_content"
         android:hint="Time"
         android:inputType="text"
+        android:textColor="@color/colorWhite"
+        android:textSize="18dp"
         />
     <!--//String dest,String date, String riderId, String time-->
 

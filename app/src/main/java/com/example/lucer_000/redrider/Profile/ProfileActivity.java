@@ -55,14 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         mProfilePresenter = new ProfilePresenter(Injection.provideTasksRepository(getApplicationContext()),profileFragment, getApplicationContext());
 
-        Button matchpage =  findViewById(R.id.matchpagebutton);
-        matchpage.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), MatchActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 
