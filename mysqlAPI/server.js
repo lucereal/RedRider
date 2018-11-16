@@ -151,8 +151,11 @@ app.post('/driverpost', function (req, res) {
                 insertresults: result.queryresults,
             })
         } else {
-            success = false;
-            body = result.queryresults;
+            res.json({
+                success: false,
+                postId: null,
+                insertresults: [],
+            })
         }
     })
 })
@@ -173,26 +176,32 @@ app.post('/riderpost', function (req, res) {
                 insertresults: result.queryresults,
             })
         } else {
-            success = false;
-            body = result.queryresults;
+            res.json({
+                success: false,
+                postId: null,
+                insertresults: [],
+            })
         }
     })
 })
 
 app.post('/getmatches',function (req,res){
     const userid = req.body.userId
-
+    
     db.getmatches(userid,function(result){
+        console.log("\nMatches: " + JSON.stringify(result));
         if (result.querysuccess) {
             success = true
             body = result.queryresults
             res.json({
                 success: true,
-                matchArray: result.matchArray,
+                matchArray: result.matchArray
             })
         }else{
-            success = false,
-            body = results.queryresults
+            res.json({
+                success:false,
+                matchArray: []
+            })
         }
 
     //    riderprofile: result1,
@@ -207,8 +216,7 @@ app.post('/getposts', function (req, res) {
 
     db.getposts(userid, function (result) {
         if (result.querysuccess) {
-            success = true;
-            body = result.queryresults;
+            
             // console.log(result);
             res.json({
                 success: true,
@@ -217,8 +225,12 @@ app.post('/getposts', function (req, res) {
                 driverposts: result.queryresultdriver
             })
         } else {
-            success = false;
-            body = result.queryresults;
+            res.json({
+                success: false,
+                //postId:body.insertId,
+                riderposts: [],
+                driverposts: []
+            })
         }
     })
 
@@ -226,7 +238,7 @@ app.post('/getposts', function (req, res) {
 
 
 
-app.listen(3001, function () {
+app.listen(3001,"0.0.0.0", function () {
     console.log('Listening on port 3000.');
 })
 
