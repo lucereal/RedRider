@@ -124,7 +124,7 @@ public class PostRepository {
                                 HttpUtils.getInstance(context).makePost(jsonBody,"getmatches", new Volleycallback() {
                                     @Override
                                     public void onSuccess(JSONObject response) {
-
+                                        System.out.print("in on success");
                                         try{
                                             System.out.println("request success: " + response.get("success"));
                                             if(response.get("success").toString().equals("true")){
@@ -218,7 +218,18 @@ public class PostRepository {
 
                         }else{
                             System.out.println("rider post not success");
-                            callback.onSuccess(new ArrayList());
+                            ArrayList<Post> postList = new ArrayList<>();
+
+                            if (mCachedPosts != null ) {
+
+                                postList = new ArrayList(mCachedPosts.values());
+                            }else{
+
+                                postList = new ArrayList();
+                            }
+
+
+                            callback.onSuccess(postList);
                         }
 
 
