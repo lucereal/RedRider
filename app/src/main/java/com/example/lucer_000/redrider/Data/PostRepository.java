@@ -185,7 +185,7 @@ public class PostRepository {
                                             }else{
 
                                                 System.out.println("get matches not success");
-                                                ArrayList<Post> postList = new AvsrrayList<>();
+                                                ArrayList<Post> postList = new ArrayList<>();
 
 
 
