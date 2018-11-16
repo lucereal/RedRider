@@ -21,10 +21,15 @@
     <include layout="@layout/appbar"
         android:id="@+id/appbar"></include>
 
-        <ListView
-            android:id="@+id/post_list"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent" />
+
+
+    <ListView
+        android:id="@+id/post_list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" />
+
+
+
 
 
 

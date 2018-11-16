@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,6 +13,10 @@ import android.widget.Toast;
 import com.example.lucer_000.redrider.Data.Injection;
 import com.example.lucer_000.redrider.Data.Profile;
 import com.example.lucer_000.redrider.Login.LoginActivity;
+
+import android.view.View;
+import android.widget.Button;
+
 import com.example.lucer_000.redrider.MatchPage.MatchActivity;
 import com.example.lucer_000.redrider.R;
 import com.example.lucer_000.redrider.util.ActivityUtils;
@@ -49,6 +54,15 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         mProfilePresenter = new ProfilePresenter(Injection.provideTasksRepository(getApplicationContext()),profileFragment, getApplicationContext());
+
+        Button matchpage =  findViewById(R.id.matchpagebutton);
+        matchpage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), MatchActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

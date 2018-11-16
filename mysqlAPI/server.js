@@ -24,9 +24,7 @@ app.post('/login', function (req, res) {
     console.log("email: " + email);
     console.log("password: " + password);
 
-    db.login(email, password, function (result) {
-        //console.log(JSON.stringify(result));
-
+    db.login(email,password).then(result=>{
         if (result.querysuccess) {
             success = true;
             body = result.queryresults[0];
@@ -44,10 +42,15 @@ app.post('/login', function (req, res) {
             })
 
         }
-
-
-
     })
+    // db.login(email, password, function (result) {
+    //     //console.log(JSON.stringify(result));
+
+        
+
+
+
+    // })
   
 
 
@@ -56,27 +59,26 @@ app.post('/login', function (req, res) {
 app.post('/signup', function (req, res) {
     const email = req.body.email;
     const password = req.body.password;
-    const major = req.body.major;
-    const name = req.body.name;
-    const age = req.body.age;
-    const sex = req.body.sex;
-
     console.log("email: " + email);
-    console.log("password: " + password);
-    console.log("major: " + major);
-    console.log("sex: " + sex);
-    console.log("age: " + age);
-    console.log("name: " + name);
-    db.signup(name, email, password, major, age, sex, function (result) {
-        //console.log(JSON.stringify(result));
+    console.log("password: " +password);
+    // const major = req.body.major;
+    // const name = req.body.name;
+    // const age = req.body.age;
+    // const sex = req.body.sex;
 
+  
+    db.signup(email, password, function (result) {
+        console.log(JSON.stringify(result));
+        
         if (result.querysuccess) {
             success = true;
             body = result.queryresults;
+
+            console.log("signup success");
             res.json({
                 success: true,
                 insertresults: result.queryresults,
-                userid: result.queryresults.insertId
+                profileId: result.queryresults.insertId
             })
 
         } else {
@@ -100,6 +102,34 @@ app.post('/signup', function (req, res) {
 
 
     })
+})
+
+app.post('/updateprofile', function(req,res){
+    const profileId = req.body.profileId;
+    const name = req.body.name;
+    const sex = req.body.sex;
+    const major = req.body.major;
+    const age = req.body.age;
+
+    db.updateProfile(profileId,name, major, age, sex, function(result){
+
+        console.log(JSON.stringify(result));
+        if(result.querysuccess){
+            res.json({
+                success:true,
+                results:result
+            })
+        }else{
+            res.json({
+                success:false,
+                results:result
+            })
+        }
+
+    })
+
+    
+
 })
 
 app.post('/driverpost', function (req, res) {
@@ -149,6 +179,28 @@ app.post('/riderpost', function (req, res) {
     })
 })
 
+app.post('/getmatches',function (req,res){
+    const userid = req.body.userId
+
+    db.getmatches(userid,function(result){
+        if (result.querysuccess) {
+            success = true
+            body = result.queryresults
+            res.json({
+                success: true,
+                matchArray: result.matchArray,
+            })
+        }else{
+            success = false,
+            body = results.queryresults
+        }
+
+    //    riderprofile: result1,
+    //    driverprofile: result2,
+    //    matchpost: result
+    })
+})
+
 app.post('/getposts', function (req, res) {
 
     const userid = req.body.userId
@@ -162,7 +214,7 @@ app.post('/getposts', function (req, res) {
                 success: true,
                 //postId:body.insertId,
                 riderposts: result.queryresultrider,
-                driverpost: result.queryresultdriver
+                driverposts: result.queryresultdriver
             })
         } else {
             success = false;

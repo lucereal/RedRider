@@ -46,6 +46,7 @@ public class PostPresenter implements PostContract.Presenter {
 
         int profileId = userProfile.getIdProfile();
 
+
         Rider riderPost = new Rider(dest,date, profileId, time);
 
         System.out.println("inside rider submit rider post");
@@ -65,7 +66,7 @@ public class PostPresenter implements PostContract.Presenter {
 
                     try{
                         System.out.println("request success: " + response.get("success"));
-                        if(response.get("success") == "true"){
+                        if(response.get("success").toString().equals("true")){
 
                             System.out.println("postId: " + response.get("postId"));
                             String postId = response.get("postId").toString();
@@ -122,12 +123,15 @@ public class PostPresenter implements PostContract.Presenter {
 
                     try{
                         System.out.println("request success: " + response.get("success"));
-                        if(response.get("success") == "true"){
+                        if(response.get("success").toString().equals("true")){
 
                             System.out.println("postId: " + response.get("postId"));
                             String postId = response.get("postId").toString();
+
+
                             postRepository.savePost(postId,driverPost);
                             mPostView.submitPostSuccess();
+
                         }else{
                             System.out.println("driver post not success");
                         }
