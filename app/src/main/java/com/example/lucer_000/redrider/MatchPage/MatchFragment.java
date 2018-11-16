@@ -200,6 +200,8 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                 TextView vehicle = listItem.findViewById(R.id.postVehicleDriver);
                 TextView seats = listItem.findViewById(R.id.postSeatsDriver);
                 TextView time = listItem.findViewById(R.id.postTimeDriver);
+                TextView postDTitle = listItem.findViewById(R.id.driverPst);
+                postDTitle.setVisibility(View.VISIBLE);
 
                 System.out.println("\n\ncurrentPost.getDestination(): " + currentPost.getDestination());
 
@@ -226,6 +228,8 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                 TextView dest = (TextView) listItem.findViewById(R.id.postDest);
                 TextView date= (TextView) listItem.findViewById(R.id.postDate);
                 TextView time= (TextView) listItem.findViewById(R.id.postTime);
+                TextView postRTitle = listItem.findViewById(R.id.riderPst);
+                postRTitle.setVisibility(View.VISIBLE);
 
                 dest.setText(currentPost.getDestination());
                 date.setText(currentPost.getDate());
