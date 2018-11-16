@@ -203,7 +203,7 @@ exports.getmatches = function (userId, callback) {
         riderprofile:{},
         driverprofile:{}
     }
-    let matchArray = [{"fish":"fish"}];
+    
     let index = 0;
     connection.query("select * from matching where DriverID=? or RiderID=?", [userId, userId], function (error, result) {
         if (error) {
