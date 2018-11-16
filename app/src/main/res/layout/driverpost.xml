@@ -6,6 +6,15 @@
     android:paddingLeft="15dp">
 
     <TextView
+        android:id="@+id/driverPst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DRIVER POST"
+        android:textColor="@color/colorWhite"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+    <TextView
         android:id="@+id/postDestDriver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -60,11 +60,11 @@ public class PostRepository {
 
     public void getPosts(Context context, final GetPostCallback callback){
 
-        mProfile.getIdProfile();
+        int profileId = mProfile.getIdProfile();
         JSONObject jsonBody;
         try{
             jsonBody = new JSONObject();
-            jsonBody.put(  "userId","1");
+            jsonBody.put(  "userId",profileId);
 
             HttpUtils.getInstance(context).makePost(jsonBody,"getposts", new Volleycallback() {
                 @Override
