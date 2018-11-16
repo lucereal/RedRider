@@ -11,7 +11,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,6 +35,8 @@ import org.json.JSONObject;
 import com.example.lucer_000.redrider.MatchPage.MatchActivity;
 import com.example.lucer_000.redrider.R;
 
+import java.util.Objects;
+
 public class PostFragment extends Fragment implements PostContract.View{
 
     PostContract.Presenter mPresenter;
@@ -43,9 +47,12 @@ public class PostFragment extends Fragment implements PostContract.View{
     private TextView seats;
     private TextView time;
 
+    private Toolbar toolbar;
+
     private boolean driver;
     Button riderBtn;
     Button driverBtn;
+    private ImageView backBtn;
     public PostFragment(){}
     //empty constructor
 
@@ -82,8 +89,20 @@ public class PostFragment extends Fragment implements PostContract.View{
                              Bundle savedInstanceState) {
          root = inflater.inflate(R.layout.post_frag, container, false);
 
+        toolbar = root.findViewById(R.id.appbar);
+        ((AppCompatActivity)Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
+        getActivity().setTitle("Red Rider");
 
+        backBtn = root.findViewById(R.id.backBtn);
+        backBtn.setVisibility(View.VISIBLE);
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(root.getContext(), MatchActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         riderBtn = root.findViewById(R.id.rider);

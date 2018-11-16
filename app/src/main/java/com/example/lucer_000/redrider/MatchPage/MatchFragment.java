@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,11 +38,13 @@ import com.example.lucer_000.redrider.Post.PostActivity;
 import com.example.lucer_000.redrider.R;
 
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class MatchFragment extends Fragment implements  MatchContract.View {
@@ -56,6 +59,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
     TextView postView;
     Button button;
     TextView emailView;
+    private Toolbar toolbar;
 
 
     public MatchFragment(){}
@@ -99,6 +103,11 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
          root = inflater.inflate(R.layout.match_frag, container, false);
 
          mPresenter.test();
+
+
+        toolbar = root.findViewById(R.id.appbar);
+        ((AppCompatActivity)Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
+        getActivity().setTitle("Red Rider");
 
         // Set up floating action button
         FloatingActionButton fab =
