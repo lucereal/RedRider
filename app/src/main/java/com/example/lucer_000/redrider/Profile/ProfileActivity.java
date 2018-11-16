@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.lucer_000.redrider.Data.Injection;
+import com.example.lucer_000.redrider.Data.PostRepository;
 import com.example.lucer_000.redrider.Data.Profile;
 import com.example.lucer_000.redrider.Login.LoginActivity;
 
@@ -79,6 +80,8 @@ public class ProfileActivity extends AppCompatActivity {
                 return true;
             case R.id.signoutItem:
                 Toast.makeText(this, "Sign out Selected", Toast.LENGTH_SHORT).show();
+                PostRepository mPostRepository = Injection.provideTasksRepository(getApplicationContext());
+                mPostRepository.clearRepo();
                 loginPage();
                 return true;
         }
