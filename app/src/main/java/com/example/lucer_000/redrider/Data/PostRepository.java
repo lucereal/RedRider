@@ -119,7 +119,7 @@ public class PostRepository {
                             JSONObject jsonBodyB;
                             try{
                                 jsonBodyB = new JSONObject();
-                                jsonBodyB.put(  "userId", profileID);
+                                jsonBodyB.put(  "userId", profileId);
 
                                 HttpUtils.getInstance(context).makePost(jsonBody,"getmatches", new Volleycallback() {
                                     @Override
@@ -145,7 +145,7 @@ public class PostRepository {
                                                     rider = jsonObjParent.getJSONObject("riderprofile");
                                                     driver = jsonObjParent.getJSONObject("driverprofile");
                                                     Profile profile = new Profile();
-                                                    if(rider.getInt("idProfile") == (profileID)){
+                                                    if(rider.getInt("idProfile") == (profileId)){
 
                                                         profile.setName(driver.get("Name").toString());
                                                         profile.setMajor(driver.get("Major").toString());
@@ -183,7 +183,19 @@ public class PostRepository {
                                                 callback.onSuccess(postList);
 
                                             }else{
-                                                System.out.println("driver post not success");
+                                                System.out.println("get matches not success");
+                                                ArrayList<Post> postList = new AvsrrayList<>();
+
+                                                if (mCachedPosts != null ) {
+
+                                                    postList = new ArrayList(mCachedPosts.values());
+                                                }else{
+
+                                                    postList = new ArrayList();
+                                                }
+
+
+                                                callback.onSuccess(postList);
                                             }
 
 
@@ -204,8 +216,19 @@ public class PostRepository {
 
 
                         }else{
-                            System.out.println("rider post not success");
-                            callback.onSuccess(new ArrayList());
+
+                            ArrayList<Post> postList = new ArrayList<>();
+
+                            if (mCachedPosts != null ) {
+
+                                postList = new ArrayList(mCachedPosts.values());
+                            }else{
+
+                                postList = new ArrayList();
+                            }
+
+
+                            callback.onSuccess(postList);
                         }
 
 
