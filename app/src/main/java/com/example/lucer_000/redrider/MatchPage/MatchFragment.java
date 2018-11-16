@@ -245,6 +245,8 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                 TextView date= (TextView) listItem.findViewById(R.id.postDateMatch);
                 TextView name= (TextView) listItem.findViewById(R.id.postNameMatch);
                 TextView major= (TextView) listItem.findViewById(R.id.postMajorMatch);
+                TextView postMTitle = listItem.findViewById(R.id.matchPst);
+                postMTitle.setVisibility(View.VISIBLE);
                 dest.setText(currentPost.getDestination());
                 date.setText(currentPost.getDate());
 

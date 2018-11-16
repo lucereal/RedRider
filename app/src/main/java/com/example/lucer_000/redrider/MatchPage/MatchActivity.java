@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.lucer_000.redrider.Data.PostRepository;
 import com.example.lucer_000.redrider.Login.LoginActivity;
 import com.example.lucer_000.redrider.Profile.ProfileActivity;
 import com.example.lucer_000.redrider.Data.Injection;
@@ -123,7 +124,10 @@ public class MatchActivity extends AppCompatActivity {
                 return true;
             case R.id.signoutItem:
                 Toast.makeText(this, "Sign out Selected", Toast.LENGTH_SHORT).show();
+                PostRepository mPostRepository = Injection.provideTasksRepository(getApplicationContext());
+                mPostRepository.clearRepo();
                 loginPage();
+
                 return true;
         }
         return super.onOptionsItemSelected(item);
