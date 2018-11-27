@@ -186,6 +186,8 @@ exports.getposts = function (userId, callback) {
                 })
             }
             {
+                console.log("\nRider posts: " + JSON.stringify(resultrider));
+                console.log("\nDriver posts: " + JSON.stringify(resultdriver));
                 callback({
                     querysuccess: true,
                     queryresultdriver: resultdriver,
@@ -218,9 +220,13 @@ exports.getmatches = function (userId, callback) {
         let riderid;
         let driverid;
 
-        console.log("rsultlength: " + result.length);
-        console.log("rsult: " + JSON.stringify(result));
-        
+      
+        if(result.length < 1){
+            callback({
+                querysuccess:false,
+                queryresults:[]
+            })
+        }
         for(let i = 0; i<result.length; i++){
            
             riderid = result[i].RiderID;
@@ -235,7 +241,7 @@ exports.getmatches = function (userId, callback) {
                 })
             }
            
-            console.log("result1: " + JSON.stringify(result1));
+            
             connection.query("select * from profile where idProfile=?", [driverid], function (error2, result2) {
                 if (error) {
                     console.log("Errors: " + error2)
@@ -247,24 +253,36 @@ exports.getmatches = function (userId, callback) {
                 
                 console.log("result1: " + JSON.stringify(result1));
                 console.log("result2: " + JSON.stringify(result2));
-                matchArray.push({
-                    matchpost:result[i],
-                    riderprofile:result1[0],
-                    driverprofile:result2[0],
-                })
-
-                console.log("result.length: " + result.length);
-                if(index >= result.length-1){
-                    callback({
-                        querysuccess: true,
-                        matchArray: matchArray
+                 if(result1 != undefined && result2 != undefined && result1.length > 0 && result2.length >0){
+                    matchArray.push({
+                        matchpost:result[i],
+                        riderprofile:result1[0],
+                        driverprofile:result2[0],
                     })
-                    console.log("fin");
+                }
+               
+
+                
+                if(index >= result.length-1){
+                    
+                    if(matchArray.length > 0){
+                        callback({
+                            querysuccess: true,
+                            matchArray: matchArray
+                        })
+                    }else{
+                        callback({
+                            querysuccess: false,
+                            matchArray: "no match"
+                        })
+                    }
+                    
+                   
                 }
                 index++;
-                console.log("result[i]: " + i);
+                
 
-                console.log(matchArray[i])
+              
             })//end query
         })//eng query
     }//end for

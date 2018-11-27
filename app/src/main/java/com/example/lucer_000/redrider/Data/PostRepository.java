@@ -184,8 +184,10 @@ public class PostRepository {
 
                                             }else{
 
-                                                System.out.println("driver post not success");
-                                                ArrayList<Post> postList = new ArrayList<>();
+                                                System.out.println("get matches not success");
+                                                ArrayList<Post> postList = new AvsrrayList<>();
+
+
 
                                                 if (mCachedPosts != null ) {
 
@@ -217,7 +219,7 @@ public class PostRepository {
 
 
                         }else{
-                            System.out.println("rider post not success");
+
                             ArrayList<Post> postList = new ArrayList<>();
 
                             if (mCachedPosts != null ) {
