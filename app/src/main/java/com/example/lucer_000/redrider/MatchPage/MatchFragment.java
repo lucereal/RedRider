@@ -205,16 +205,16 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
                 System.out.println("\n\ncurrentPost.getDestination(): " + currentPost.getDestination());
 
-                dest.setText(currentPost.getDestination());
+                dest.setText("Destination: " + currentPost.getDestination());
 
-                date.setText(currentPost.getDate());
+                date.setText("Date: " + currentPost.getDate());
 
-                time.setText(((Driver) currentPost).getTime());
+                time.setText("Time: " + ((Driver) currentPost).getTime());
 
-                vehicle.setText(((Driver) currentPost).getVehicle());
+                vehicle.setText("Vehicle: " + ((Driver) currentPost).getVehicle());
                 int seatInt = ((Driver) currentPost).getSeats();
 
-                seats.setText(Integer.toString(seatInt));
+                seats.setText("Seats available: " + Integer.toString(seatInt));
 
 
             }else if(currentPost instanceof Rider){
@@ -231,9 +231,9 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                 TextView postRTitle = listItem.findViewById(R.id.riderPst);
                 postRTitle.setVisibility(View.VISIBLE);
 
-                dest.setText(currentPost.getDestination());
-                date.setText(currentPost.getDate());
-                time.setText(((Rider) currentPost).getTime());
+                dest.setText("Destination: " + currentPost.getDestination());
+                date.setText("Date: " + currentPost.getDate());
+                time.setText("Time: " + ((Rider) currentPost).getTime());
             }else if(currentPost instanceof MatchPost){
                 if (listItem == null) {
                     listItem = LayoutInflater.from(context).inflate(R.layout.matchpost, parent, false);
@@ -247,11 +247,11 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                 TextView major= (TextView) listItem.findViewById(R.id.postMajorMatch);
                 TextView postMTitle = listItem.findViewById(R.id.matchPst);
                 postMTitle.setVisibility(View.VISIBLE);
-                dest.setText(currentPost.getDestination());
-                date.setText(currentPost.getDate());
+                dest.setText("Destination: " + currentPost.getDestination());
+                date.setText("Date: " + currentPost.getDate());
 
-                name.setText(((MatchPost) currentPost).getProfile().getName());
-                major.setText(((MatchPost) currentPost).getProfile().getMajor());
+                name.setText("Name: " + ((MatchPost) currentPost).getProfile().getName());
+                major.setText("Major: " + ((MatchPost) currentPost).getProfile().getMajor());
 
 
 

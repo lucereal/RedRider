@@ -10,6 +10,8 @@
     android:layout_height="wrap_content"
     android:hint="@string/dest_hint"
     android:inputType="text"
+        android:backgroundTint="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
         android:textColor="@color/colorWhite"
         android:textSize="18dp"
     />
@@ -22,6 +24,8 @@
     android:layout_height="wrap_content"
     android:hint="@string/date_hint"
     android:inputType="text"
+        android:textColorHint="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"
         android:textColor="@color/colorWhite"
         android:textSize="18dp"
    />
@@ -32,6 +36,8 @@
         android:layout_height="wrap_content"
         android:hint="Seats"
         android:inputType="text"
+        android:textColorHint="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"
         android:textColor="@color/colorWhite"
         android:textSize="18dp"
         />
@@ -40,6 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Time"
+        android:textColorHint="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"
         android:inputType="text"
         android:textColor="@color/colorWhite"
         android:textSize="18dp"
@@ -52,6 +60,8 @@
         android:layout_height="wrap_content"
         android:hint="Vehicle"
         android:inputType="text"
+        android:textColorHint="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"
         android:textColor="@color/colorWhite"
         android:textSize="18dp"
         />

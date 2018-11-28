@@ -92,11 +92,10 @@ public class PostFragment extends Fragment implements PostContract.View{
         toolbar = root.findViewById(R.id.appbar);
         ((AppCompatActivity)Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
         getActivity().setTitle("Red Rider");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
 
-        backBtn = root.findViewById(R.id.backBtn);
-        backBtn.setVisibility(View.VISIBLE);
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(root.getContext(), MatchActivity.class);
