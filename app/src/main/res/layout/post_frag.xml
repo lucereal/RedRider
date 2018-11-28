@@ -22,19 +22,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <Button
                     android:id="@+id/rider"
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/rider" />
+                    android:text="@string/rider"
+                    android:layout_weight="1.0"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:background="@color/colorBlack"
+                    />
 
                 <Button
                     android:id="@+id/driver"
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/driver" />
+                    android:text="@string/driver"
+                    android:layout_weight="1.0"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:background="@color/colorBlack"/>
 
             </LinearLayout>
 
@@ -76,11 +86,14 @@
 
             <Button
                 android:id="@+id/submit"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Submit"
                 android:layout_gravity="center_horizontal"
                 android:visibility="gone"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:background="@color/colorBlack"
                 />
 
             <TextView
