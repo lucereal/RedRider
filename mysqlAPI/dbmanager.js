@@ -99,7 +99,7 @@ exports.matchrespond = function (userID,tripID,response,callback){
         }
         callback({
             querysuccess:true,
-            queryresults:results
+            
         })
     })
     })
@@ -203,7 +203,7 @@ exports.getposts = function (userID, callback) {
     })
 }
 
-exports.getmatches = function (userID, callback) {
+exports.getmatches = function (userId, callback) {
     let obj = {
         matchpost:{},
         riderprofile:{},

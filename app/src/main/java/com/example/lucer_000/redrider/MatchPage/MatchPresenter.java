@@ -114,10 +114,14 @@ public class MatchPresenter implements MatchContract.Presenter {
             jsonBody.put("userID", userID);
             jsonBody.put("tripID", tripID);
 
-            HttpUtils.getInstance(context).makePost(jsonBody,"matchresponse", new Volleycallback() {
+            System.out.println("made it in matchrespond");
+
+            HttpUtils.getInstance(context).makePost(jsonBody,"matchrespond", new Volleycallback() {
+
+
                 @Override
                 public void onSuccess(JSONObject response) {
-                    System.out.println("made it");
+                    System.out.println("made it matchrespond");
                     try{
                         System.out.println("success: " + response.get("success"));
 
@@ -131,6 +135,7 @@ public class MatchPresenter implements MatchContract.Presenter {
 
 
                     }catch(JSONException e){
+                        System.out.println("error1");
                         e.printStackTrace();
                     }
 
@@ -139,6 +144,7 @@ public class MatchPresenter implements MatchContract.Presenter {
             });
 
         }catch(JSONException e){
+            System.out.println("error1");
             e.printStackTrace();
         }
     }

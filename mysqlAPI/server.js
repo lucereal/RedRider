@@ -24,7 +24,7 @@ app.post('/login', function (req, res) {
     console.log("email: " + email);
     console.log("password: " + password);
 
-    db.login(email,password).then(result=>{
+    db.login(email, password).then(result => {
         if (result.querysuccess) {
             success = true;
             body = result.queryresults[0];
@@ -35,7 +35,7 @@ app.post('/login', function (req, res) {
 
         } else {
             success = false;
-            
+
             res.json({
                 success: false
             })
@@ -45,12 +45,12 @@ app.post('/login', function (req, res) {
     // db.login(email, password, function (result) {
     //     //console.log(JSON.stringify(result));
 
-        
+
 
 
 
     // })
-  
+
 
 
 })
@@ -59,16 +59,16 @@ app.post('/signup', function (req, res) {
     const email = req.body.email;
     const password = req.body.password;
     console.log("email: " + email);
-    console.log("password: " +password);
+    console.log("password: " + password);
     // const major = req.body.major;
     // const name = req.body.name;
     // const age = req.body.age;
     // const sex = req.body.sex;
 
-  
+
     db.signup(email, password, function (result) {
         console.log(JSON.stringify(result));
-        
+
         if (result.querysuccess) {
             success = true;
             body = result.queryresults;
@@ -103,31 +103,31 @@ app.post('/signup', function (req, res) {
     })
 })
 
-app.post('/updateprofile', function(req,res){
+app.post('/updateprofile', function (req, res) {
     const profileId = req.body.profileId;
     const name = req.body.name;
     const sex = req.body.sex;
     const major = req.body.major;
     const age = req.body.age;
 
-    db.updateProfile(profileId,name, major, age, sex, function(result){
+    db.updateProfile(profileId, name, major, age, sex, function (result) {
 
         console.log(JSON.stringify(result));
-        if(result.querysuccess){
+        if (result.querysuccess) {
             res.json({
-                success:true,
-                results:result
+                success: true,
+                results: result
             })
-        }else{
+        } else {
             res.json({
-                success:false,
-                results:result
+                success: false,
+                results: result
             })
         }
 
     })
 
-    
+
 
 })
 
@@ -178,10 +178,10 @@ app.post('/riderpost', function (req, res) {
     })
 })
 
-app.post('/getmatches',function (req,res){
+app.post('/getmatches', function (req, res) {
     const userid = req.body.userId
 
-    db.getmatches(userid,function(result){
+    db.getmatches(userid, function (result) {
         if (result.querysuccess) {
             success = true
             body = result.queryresults
@@ -189,14 +189,14 @@ app.post('/getmatches',function (req,res){
                 success: true,
                 matchArray: result.matchArray,
             })
-        }else{
+        } else {
             success = false,
-            body = results.queryresults
+                body = results.queryresults
         }
 
-    //    riderprofile: result1,
-    //    driverprofile: result2,
-    //    matchpost: result
+        //    riderprofile: result1,
+        //    driverprofile: result2,
+        //    matchpost: result
     })
 })
 
@@ -223,20 +223,25 @@ app.post('/getposts', function (req, res) {
 
 })
 
-app.post('/matchrespond', function (req,res){
+app.post('/matchrespond', function (req, res) {
     const userid = req.body.userID;
     const tripid = req.body.tripID;
-    const response= req.body.response;
+    const response = req.body.response;
+    console.log("match response: " + response);
+    
     console.log(req.body.userID + " " + tripid + " " + response)
-    db.matchrespond(userid,tripid,response, function(result){
-        if( result.querysuccess){
-            success = true
-        res.json({
-            success: true//,
-            //results: result.queryresults
-        })
-    }else
-    success=false
+    db.matchrespond(userid, tripid, response, function (result) {
+        if (result.querysuccess) {
+
+            console.log("matchresponse true");
+            res.json({
+                success: true
+            })
+        } else
+            res.json({
+                success: false
+            })
+
     })
 })
 

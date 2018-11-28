@@ -285,7 +285,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                         acceptBtn.setVisibility(View.GONE);
                         declineBtn.setVisibility(View.GONE);
                         acceptText.setVisibility(View.VISIBLE);
-                        acceptText.setText("Match Accepted!");
+                        acceptText.setText("Match Declined!");
 
                         mPresenter.acceptMatch(false,tripID,userID);
                     }
