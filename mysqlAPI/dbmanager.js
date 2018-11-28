@@ -55,7 +55,7 @@ exports.login = function (email, password, callback) {
 
 exports.signup = function (email, password, callback) {
     //if user already exists
-    console.log('here');
+    //console.log('here');
     this.login(email,password).then(result =>{
         if (result.querysuccess == true) {
             callback({
@@ -63,9 +63,6 @@ exports.signup = function (email, password, callback) {
                 msg: "user exisits"
             })
         }
-    
-        
-
         else {
             console.log(1);
             connection.query('insert into profile(Email, Password) VALUES (?, ?)', [email, password], function (error, results) {
@@ -76,29 +73,37 @@ exports.signup = function (email, password, callback) {
                         queryresults: "insert failed"
                     })
                 } else {
-
-                    // if (results.length < 1) {//if results is empty
-                    //     callback({
-                    //         querysuccess: false,
-                    //         queryresults: results
-                    //     })
-                    // } else {
-
                     console.log("results: " + results);
                     callback({
                         querysuccess: true,
                         queryresults: results
                     });
-                    //}
                 }
-
-
-
             })
-
         }
     })
+}
 
+exports.matchrespond = function (userID,tripID,response,callback){
+    connection.query("update matching set riderresponse=? where RiderID=? and tripID=?",[response,userID,tripID],function(error,results){
+        if(error){
+            callback({
+                querysuccess:false
+            })
+        }
+    connection.query("update matching set driverresponse=? where DriverID=? and tripID=?",[response,userID,tripID], function(error1,results1){
+        if(error1){
+            callback({
+                querysuccess:false
+            })
+        }
+        callback({
+            querysuccess:true,
+            queryresults:results
+        })
+    })
+    })
+   
 }
 
 exports.updateProfile = function (profileId, name, major, age, sex, callback) {
@@ -174,9 +179,9 @@ exports.riderpost = function (riderid, date, destination, time, callback) {
     })
 }
 
-exports.getposts = function (userId, callback) {
-    connection.query("select * from riderpost where RiderID=?", [userId], function (error, resultrider) {
-        connection.query("select * from driverpost where DriverID=?", [userId], function (error, resultdriver) {
+exports.getposts = function (userID, callback) {
+    connection.query("select * from riderpost where RiderID=?", [userID], function (error, resultrider) {
+        connection.query("select * from driverpost where DriverID=?", [userID], function (error, resultdriver) {
             if (error) {
                 console.log("errors: " + error);
                 callback({
@@ -198,7 +203,7 @@ exports.getposts = function (userId, callback) {
     })
 }
 
-exports.getmatches = function (userId, callback) {
+exports.getmatches = function (userID, callback) {
     let obj = {
         matchpost:{},
         riderprofile:{},
@@ -285,7 +290,5 @@ exports.getmatches = function (userId, callback) {
             })//end query
         })//eng query
     }//end for
-   
-    
     })
 }
