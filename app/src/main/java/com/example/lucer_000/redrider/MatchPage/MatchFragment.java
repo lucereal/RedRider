@@ -40,6 +40,7 @@ import com.example.lucer_000.redrider.R;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -270,7 +271,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
                         acceptBtn.setVisibility(View.GONE);
                         declineBtn.setVisibility(View.GONE);
                         acceptText.setVisibility(View.VISIBLE);
-                        acceptText.setText("Match Accepted!");
+                        Toast.makeText(getContext(), "Match Accepted", Toast.LENGTH_SHORT).show();
 
                         mPresenter.acceptMatch(true,tripID,userID);
 
