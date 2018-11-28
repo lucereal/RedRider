@@ -25,6 +25,7 @@ public interface MatchContract {
 
         void makeRequest();
         void test();
+        void acceptMatch(boolean accepted,int tripID, int userID);
 
     }
 }

@@ -64,6 +64,13 @@
             android:id="@+id/declineBtn"
             android:src="@drawable/ic_close_black_24dp"
            />
+        <TextView
+            android:id="@+id/acceptText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textColor="#FFFF00"
+            android:textSize="18dp"/>
     </LinearLayout>
 
 </LinearLayout>

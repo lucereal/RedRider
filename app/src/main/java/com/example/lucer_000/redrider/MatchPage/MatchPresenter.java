@@ -62,9 +62,6 @@ public class MatchPresenter implements MatchContract.Presenter {
 
     public void loadPosts(){
 
-
-
-
         postRepository.getPosts(context, new GetPostCallback() {
             @Override
             public void onSuccess(ArrayList list) {
@@ -99,6 +96,52 @@ public class MatchPresenter implements MatchContract.Presenter {
         System.out.println(test.getName());
     }
 
+
+
+    public void acceptMatch(boolean accepted, int tripID, int userID){
+        String acceptedStr;
+        if(accepted){
+            acceptedStr = "accepted";
+
+        }else{
+            acceptedStr = "declined";
+        }
+
+        JSONObject jsonBody;
+        try{
+            jsonBody = new JSONObject();
+            jsonBody.put("response", acceptedStr);
+            jsonBody.put("userID", userID);
+            jsonBody.put("tripID", tripID);
+
+            HttpUtils.getInstance(context).makePost(jsonBody,"matchresponse", new Volleycallback() {
+                @Override
+                public void onSuccess(JSONObject response) {
+                    System.out.println("made it");
+                    try{
+                        System.out.println("success: " + response.get("success"));
+
+//                        if(accepted){
+//                            mMatchView.showMatchAccepted(true);
+//                        }else{
+//                            mMatchView.showMatchAccepted(false);
+//                        }
+
+
+
+
+                    }catch(JSONException e){
+                        e.printStackTrace();
+                    }
+
+                    //return null;
+                }
+            });
+
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+    }
     public void makeRequest(){
 
 

@@ -156,7 +156,7 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
     @Override
     public void showPost(List<Post> postArray){
 
-        adapter = new PostAdapter(getContext(),postArray);
+        adapter = new PostAdapter(getContext(),postArray,mPresenter);
         listView.setAdapter(adapter);
 
     }
@@ -166,11 +166,12 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
         private List<Post> mPosts = new ArrayList<>();
         private Context context;
         private List<Post> postList = new ArrayList<>();
-
-        public PostAdapter(Context context, List<Post> posts) {
+        private MatchContract.Presenter mPresenter;
+        public PostAdapter(Context context, List<Post> posts, MatchContract.Presenter mPresenter) {
             super(context, 0, posts);
             this.context = context;
             mPosts = posts;
+            this.mPresenter = mPresenter;
 
         }
 
@@ -252,6 +253,45 @@ public class MatchFragment extends Fragment implements  MatchContract.View {
 
                 name.setText(((MatchPost) currentPost).getProfile().getName());
                 major.setText(((MatchPost) currentPost).getProfile().getMajor());
+
+
+                ImageView acceptBtn = listItem.findViewById(R.id.acceptBtn);
+                ImageView declineBtn = listItem.findViewById(R.id.declineBtn);
+
+                int tripID = ((MatchPost) currentPost).getTripID();
+                int userID = ((MatchPost) currentPost).getProfile().getIdProfile();
+
+                TextView acceptText = listItem.findViewById(R.id.acceptText);
+
+                acceptBtn.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+
+                        acceptBtn.setVisibility(View.GONE);
+                        declineBtn.setVisibility(View.GONE);
+                        acceptText.setVisibility(View.VISIBLE);
+                        acceptText.setText("Match Accepted!");
+
+                        mPresenter.acceptMatch(true,tripID,userID);
+
+
+                    }
+                });
+
+                declineBtn.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+
+                        acceptBtn.setVisibility(View.GONE);
+                        declineBtn.setVisibility(View.GONE);
+                        acceptText.setVisibility(View.VISIBLE);
+                        acceptText.setText("Match Accepted!");
+
+                        mPresenter.acceptMatch(false,tripID,userID);
+                    }
+                });
+
+
 
 
 

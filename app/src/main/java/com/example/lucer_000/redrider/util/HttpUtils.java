@@ -20,7 +20,7 @@ public class HttpUtils {
 
     public static HttpUtils myInstance;
     private static Context context;
-    private String URL ="http://10.201.14.137:3001/";
+    private String URL ="http://10.1.4.42:3001/";
 
 
 

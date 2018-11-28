@@ -35,10 +35,9 @@ app.post('/login', function (req, res) {
 
         } else {
             success = false;
-            body = result.queryresults;
+            
             res.json({
-                success: false,
-                user: result.queryresults
+                success: false
             })
 
         }
@@ -238,7 +237,7 @@ app.post('/getposts', function (req, res) {
 
 
 
-app.listen(3001,"0.0.0.0", function () {
+app.listen(3001, function () {
     console.log('Listening on port 3000.');
 })
 

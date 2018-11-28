@@ -44,7 +44,6 @@ exports.login = function (email, password, callback) {
             console.log(error.stack);
             resolve({
                 querysuccess: false,
-                queryresults: result
             })
         })
     });
