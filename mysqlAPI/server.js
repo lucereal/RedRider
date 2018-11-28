@@ -151,11 +151,8 @@ app.post('/driverpost', function (req, res) {
                 insertresults: result.queryresults,
             })
         } else {
-            res.json({
-                success: false,
-                postId: null,
-                insertresults: [],
-            })
+            success = false;
+            body = result.queryresults;
         }
     })
 })
@@ -176,32 +173,26 @@ app.post('/riderpost', function (req, res) {
                 insertresults: result.queryresults,
             })
         } else {
-            res.json({
-                success: false,
-                postId: null,
-                insertresults: [],
-            })
+            success = false;
+            body = result.queryresults;
         }
     })
 })
 
 app.post('/getmatches',function (req,res){
     const userid = req.body.userId
-    
+
     db.getmatches(userid,function(result){
-        console.log("\nMatches: " + JSON.stringify(result));
         if (result.querysuccess) {
             success = true
             body = result.queryresults
             res.json({
                 success: true,
-                matchArray: result.matchArray
+                matchArray: result.matchArray,
             })
         }else{
-            res.json({
-                success:false,
-                matchArray: []
-            })
+            success = false,
+            body = results.queryresults
         }
 
     //    riderprofile: result1,
@@ -216,7 +207,8 @@ app.post('/getposts', function (req, res) {
 
     db.getposts(userid, function (result) {
         if (result.querysuccess) {
-            
+            success = true;
+            body = result.queryresults;
             // console.log(result);
             res.json({
                 success: true,
@@ -225,20 +217,31 @@ app.post('/getposts', function (req, res) {
                 driverposts: result.queryresultdriver
             })
         } else {
-            res.json({
-                success: false,
-                //postId:body.insertId,
-                riderposts: [],
-                driverposts: []
-            })
+            success = false;
+            body = result.queryresults;
         }
     })
 
 })
 
+app.post('/matchrespond', function (req,res){
+    const userid = req.body.userID;
+    const tripid = req.body.tripID;
+    const response= req.body.response;
+    console.log(req.body.userID + " " + tripid + " " + response)
+    db.matchrespond(userid,tripid,response, function(result){
+        if( result.querysuccess){
+            success = true
+        res.json({
+            success: true//,
+            //results: result.queryresults
+        })
+    }else
+    success=false
+    })
+})
 
-
-app.listen(3001,"0.0.0.0", function () {
+app.listen(3001, function () {
     console.log('Listening on port 3000.');
 })
 
